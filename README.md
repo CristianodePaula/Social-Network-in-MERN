@@ -5,11 +5,12 @@ Click to watch the video on youtube
 
 ## 🚀 Starting
 
-Welcome to another fullstack project! This application consists of a social network of animal adoptions. It is possible to create a profile, NGO, follow or like users and NGOs.
+Welcome to another fullstack project! This application consists of a social network of animal adoptions. It is possible to create a profile, NGO, follow or like users and NGOs, chat and admin panel.
 
 ## 📋 Prerequisites
 
 * React
+* Styled-components
 * Redux
 * Axios
 * Node
@@ -23,7 +24,7 @@ Welcome to another fullstack project! This application consists of a social netw
 
 ## 📌 Version
 
-This repository is basically a backup. From version 1.0 onwards there may be commits in order to improve the code. 
+This repository is basically a backup. For this reason I chose to use long commits. From version 1.0 using minors to optimize the system over time.
 
 ## ✒️ Author
 
