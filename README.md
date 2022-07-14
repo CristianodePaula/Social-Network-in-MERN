@@ -1,5 +1,3 @@
-01:39:00
-
 # SOCIAL NETWORK
 
 Click to watch the video on youtube 

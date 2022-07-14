@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Container = styled.div`
   height: 320px;
@@ -75,8 +76,10 @@ export default function ProfileCard() {
             <Span>Seguindo</Span>
             <Info>200</Info>
           </div>
-        </InfoContainer>
-        <Perfil>Perfil</Perfil>
+          </InfoContainer>
+          <Link to='/profile'>
+            <Perfil>Perfil</Perfil>
+          </Link>
       </Wrapper>
     </Container>
   )

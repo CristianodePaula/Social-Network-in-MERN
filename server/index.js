@@ -30,7 +30,6 @@ mongoose.connect(process.env.DATABASE, {
 .then(console.log("Conectado ao banco de dados"))
 .catch((err) => console.log(err))
 
-
 app.use('/auth', AuthRoute)
 app.use('/user', UserRoute)
 app.use('/post', PostRoute)
