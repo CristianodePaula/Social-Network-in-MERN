@@ -61,14 +61,6 @@ const Button = styled.button`
   color: white;
   cursor: pointer;
 `
-const PreviewImage = styled.div`
-position: absolute;
-height: 100px;
-width: 100px;
-object-fit: cover;
-` 
-
-
 export default function PostShare() {
 
   const [image, setImage] = useState(null)

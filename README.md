@@ -1,7 +1,7 @@
 # SOCIAL NETWORK
 
 Click to watch the video on youtube 
-[![)]()
+[![Watch the video](https://user-images.githubusercontent.com/91747232/179322680-9afa9b63-ced3-45fa-aa01-3e47f7404c2f.png)()]
 
 ## 🚀 Starting
 

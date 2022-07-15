@@ -101,7 +101,7 @@ const UnFollowUser = async (req, res) => {
       if (followUser.followers.includes(currentUserId)) {
         await followUser.updateOne({ $pull: { followers: currentUserId } })
         await followingUser.updateOne({ $pull: { following: id } })
-        res.status(200).json("Usuário não seguido!")
+        res.status(200).json("Usuário seguido!")
       } else {
         res.status(403).json("O usuário não é seguido por você")
       }

@@ -47,7 +47,7 @@ export const postsData = [
         img: "https://images.pexels.com/photos/2317904/pexels-photo-2317904.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         name: 'Maryam',
         desc: "Party time :)",
-        likes: 2300,
+        likes: 300,
         liked: false
 
     },
@@ -55,7 +55,7 @@ export const postsData = [
         img:"https://images.pexels.com/photos/97082/weimaraner-puppy-dog-snout-97082.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         name: "Salena Gomez",
         desc: "At Archery Festival",
-        likes: 800,
+        likes: 100,
         liked: false
     }
 ]

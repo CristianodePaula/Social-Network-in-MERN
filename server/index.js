@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 const AuthRoute = require("./routes/AuthRoute")
 const UserRoute = require("./routes/UserRoute")
@@ -22,6 +23,10 @@ app.use(bodyParser.urlencoded({
     limit: "50mb", 
     extended: true 
 }))
+app.use(cors())
+
+app.use(express.static('public'))
+app.use('/images', express.static('images'))
 
 mongoose.connect(process.env.DATABASE, { 
     useNewUrlParser: true, 

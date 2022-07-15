@@ -1,23 +1,33 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Banner from './components/Banner/Banner'
+import { Routes, Route, Navigate } from "react-router-dom"
 import Home from './pages/Home/Home'
-import Profile from './pages/Profile/Profile'
 import Register from './pages/Register/Register'
 import Login from './pages/Login/Login'
+import { useSelector } from "react-redux"
 
 export default function App() {
+
+  const user = useSelector((state) => state.authReducer.authData);
+
   return (
     <>
-      <BrowserRouter>
       <Routes>
-      <Route path='/register' element={<Register />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/' element={<Home />} />
-      <Route path='/banner' element={<Banner />} />
-      <Route path='/profile' element={<Profile />} />
+   
+      <Route
+          path="/"
+          element={user ? <Navigate to="home" /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/home"
+          element={user ? <Home /> : <Navigate to="../login" />}
+        />
+        <Route
+          path="/login"
+          element={user ? <Navigate to="../home" /> : <Login />}
+        />
+        <Route path='/register' element={<Register />} />
       </Routes>
-    </BrowserRouter>
+ 
     </>
   )
 }

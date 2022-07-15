@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
+import { logIn } from "../../actions/AuthActions.js"
+import { useDispatch } from "react-redux"
 
 export const Container = styled.div`
   height: 100vh;
@@ -24,7 +27,7 @@ export const Title = styled.h1`
   color: blue;
 `
 export const Desc = styled.span``
-export const BoxLogin = styled.div`
+export const BoxLogin = styled.form`
   height: 260px;
   width: 300px;
   padding: 20px;
@@ -63,6 +66,27 @@ export const Span = styled.span`
   color: red;
 `
 export default function Login() {
+
+  const initialState = {
+    firstname: "",
+    lastname: "",
+    username: "",
+    password: "",
+  }
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const [data, setData] = useState(initialState)
+
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+        dispatch(logIn(data, navigate))
+  }
+
   return (
     <Container>
       <Wrapper>
@@ -70,12 +94,26 @@ export default function Login() {
           <Title>Social Pet</Title>
           <Desc>Esta é uma página destinadas a ONGS que cuidam dos animais</Desc>
         </BoxSocial>
-        <BoxLogin>
-          <TitleLogin>Logar</TitleLogin>
-          <Input placeholder='email'/>
-          <Input placeholder='senha'/>
-          <Button>Entrar</Button>
-          <Link to='/register' style={{textDecoration: 'none'}}>
+        <BoxLogin onSubmit={handleSubmit}>
+        <Input 
+          type='text'
+          placeholder='nome de usuário' 
+          name="username"
+          value={data.username}
+          onChange={handleChange}
+        />
+        <Input 
+          type='password'
+          placeholder='senha' 
+          name="password"
+          value={data.password}
+          onChange={handleChange}
+        />
+        <Button 
+          type='submit'
+        >Registrar
+        </Button>
+        <Link to='/register' style={{textDecoration: 'none'}}>
             <Span>Registrar</Span>
           </Link>
         </BoxLogin>
