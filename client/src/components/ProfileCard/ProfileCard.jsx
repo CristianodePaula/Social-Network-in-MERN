@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useSelector } from "react-redux"
 
 const Container = styled.div`
   height: 320px;
@@ -59,27 +60,57 @@ const Perfil = styled.span`
   bottom: 5%;
   cursor: pointer;
 `
-export default function ProfileCard() {
+export default function ProfileCard({ location }) {
+
+  const { user } = useSelector((state) => state.authReducer.authData)
+  const posts = useSelector((state) => state.postReducer.posts)
+  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER
+
   return (
     <Container>
       <Wrapper>
-        <BackgroundPic src='https://images.pexels.com/photos/2507007/pexels-photo-2507007.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' />
-        <ProfilePic src='https://images.pexels.com/photos/799420/pexels-photo-799420.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' />
-        <Username>Sakura Card Captors</Username>
+        <BackgroundPic src={
+          user.coverPicture
+            ? serverPublic + user.coverPicture
+            : serverPublic + "defaultCover.jpg"
+        }
+        />
+        <ProfilePic src={
+          user.profilePicture
+            ? serverPublic + user.profilePicture
+            : serverPublic + "defaultProfile.png"
+        } />
+        <Username>{user.fistname}{user.lastname}</Username>
+        <span>{user.worksAt ? user.worksAt : 'Escreva algo sobre você'}</span>
         <Line />
         <InfoContainer>
           <div>
             <Span>Seguidores</Span>
-            <Info>1000</Info>
+            <Info>{user.followers.length}</Info>
           </div>
           <div>
             <Span>Seguindo</Span>
-            <Info>200</Info>
+            <Info>{user.following.length}</Info>
           </div>
-          </InfoContainer>
-          <Link to='/profile'>
+          {location === "profilePage" && (
+            <>
+              <div></div>
+              <div>
+                <span>{
+                  posts.filter((post) => post.userId === user._id).length
+                }</span>
+                <span>Posts</span>
+              </div>{" "}
+            </>
+          )}
+        </InfoContainer>
+        {location === "profilePage"  ? (
+          ""
+        ) : (
+          <Link to={`/profile/${user._id}`}>
             <Perfil>Perfil</Perfil>
           </Link>
+        )}
       </Wrapper>
     </Container>
   )

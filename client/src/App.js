@@ -1,6 +1,7 @@
 import React from 'react'
 import { Routes, Route, Navigate } from "react-router-dom"
 import Home from './pages/Home/Home'
+import Profile from './pages/Profile/Profile'
 import Register from './pages/Register/Register'
 import Login from './pages/Login/Login'
 import { useSelector } from "react-redux"
@@ -12,7 +13,6 @@ export default function App() {
   return (
     <>
       <Routes>
-   
       <Route
           path="/"
           element={user ? <Navigate to="home" /> : <Navigate to="/login" />}
@@ -21,13 +21,25 @@ export default function App() {
           path="/home"
           element={user ? <Home /> : <Navigate to="../login" />}
         />
+          <Route
+          path="/profile/:id"
+          element={user ? <Profile /> : <Navigate to="../auth" />}
+        />
         <Route
           path="/login"
           element={user ? <Navigate to="../home" /> : <Login />}
         />
         <Route path='/register' element={<Register />} />
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>Página não existente</p>
+            </main>
+          }
+        />
       </Routes>
- 
+
     </>
   )
 }

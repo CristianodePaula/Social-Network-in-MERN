@@ -32,6 +32,8 @@ export const Button = styled.button`
 `
 
 function ProfileEdit({ editOpened, setEditOpened }) {
+
+  
   const theme = useMantineTheme()
 
   return (

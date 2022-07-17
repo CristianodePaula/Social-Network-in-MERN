@@ -1,7 +1,7 @@
 # SOCIAL NETWORK
 
 Click to watch the video on youtube 
-[![Watch the video](https://user-images.githubusercontent.com/91747232/179322680-9afa9b63-ced3-45fa-aa01-3e47f7404c2f.png)()]
+[![Watch the video](https://user-images.githubusercontent.com/91747232/179322680-9afa9b63-ced3-45fa-aa01-3e47f7404c2f.png)]()
 
 ## 🚀 Starting
 
@@ -14,7 +14,7 @@ Welcome to another fullstack project! This application consists of a social netw
 * Redux
 * Axios
 * Node
-* Express 
+* Express
 * MongoDB
 * Bcrypt
 
@@ -36,6 +36,10 @@ This code is Open Source
 
 ## 🎁 Thanks
 
- 🤓
 
 
+
+#### ERROS 
+
+# Uncaught TypeError: Cannot read properties of undefined (reading 'includes') at SinglePost (SinglePost.jsx:32:1)
+# Ao submeter a postagem na linha do tempo

@@ -6,6 +6,8 @@ import {
   FaLocationArrow,
   FaRegCalendarAlt
 } from 'react-icons/fa'
+import { useDispatch, useSelector } from "react-redux"
+import { uploadImage, uploadPost } from "../../actions/UploadAction"
 
 const Container = styled.div`
   height: 120px;
@@ -50,7 +52,7 @@ const Option = styled.a`
 const Span = styled.span`
   font-size: 16px;
   margin-left: 15px;
-` 
+`
 const Button = styled.button`
   height: 30px;
   width: 70px;
@@ -63,51 +65,100 @@ const Button = styled.button`
 `
 export default function PostShare() {
 
+  const { user } = useSelector((state) => state.authReducer.authData)
+  const loading = useSelector((state) => state.postReducer.uploading)
+  const dispatch = useDispatch()
   const [image, setImage] = useState(null)
   const imageRef = useRef()
+  const desc = useRef()
+  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER
 
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {
       let img = event.target.files[0]
-      setImage({
-        image: URL.createObjectURL(img),
-      })
+      setImage(img)
     }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const newPost = {
+      userId: user._id,
+      desc: desc.current.value,
+    }
+
+    if (image) {
+      const data = new FormData()
+      const fileName = Date.now() + image.name
+      data.append("name", fileName)
+      data.append("file", image)
+      newPost.image = fileName
+      console.log(newPost)
+      try {
+        dispatch(uploadImage(data))
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    dispatch(uploadPost(newPost))
+    resetShare()
+  }
+
+  const resetShare = () => {
+    setImage(null);
+    desc.current.value = ""
   }
 
   return (
     <Container>
       <Wrapper>
-        <ProfilePic src="https://images.pexels.com/photos/799420/pexels-photo-799420.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
-        <Input type='text' placeholder='O que deseja publicar?' />
+        <ProfilePic src={
+          user.profilePicture
+            ? serverPublic + user.profilePicture
+            : serverPublic + "defaultProfile.png"
+        }
+        />
+        <Input
+          type='text'
+          placeholder='O que deseja publicar?'
+          required
+          ref={desc}
+        />
       </Wrapper>
       <Share>
-        <Option  onClick={()=>imageRef.current.click()}>
-          <FaPhotoVideo style={{color: 'blue'}}/>
+        <Option
+          onClick={() => imageRef.current.click()}
+        >
+          <FaPhotoVideo style={{ color: 'blue' }} />
           <Span> Mídia </Span>
         </Option>
         <Option>
-          <FaLocationArrow style={{color: 'red'}}/>
+          <FaLocationArrow style={{ color: 'red' }} />
           <Span> Local </Span>
         </Option>
         <Option>
-          <FaRegCalendarAlt style={{color: 'green'}}/>
+          <FaRegCalendarAlt style={{ color: 'green' }} />
           <Span> Data </Span>
         </Option>
-        <Button>Publicar</Button>
+        <Button
+          onClick={handleSubmit}
+          disabled={loading}
+        >
+          {loading ? "uploading" : "Share"}
+        </Button>
       </Share>
       <div style={{ display: "none" }}>
-            <input
-              type="file"
-              name="myImage"
-              ref={imageRef}
-              onChange={onImageChange}
-            />
-          </div>
-        {image && (
+        <input
+          type="file"
+          ref={imageRef}
+          onChange={onImageChange}
+        />
+      </div>
+      {image && (
         <div className='previewImage'>
-          <FaRegCalendarAlt onClick={()=>setImage(null)}/>
-          <img src={image.image} alt="" />
+          <FaRegCalendarAlt onClick={() => setImage(null)} />
+          <img src={URL.createObjectURL(image)} alt="preview" />
         </div>
       )}
     </Container>

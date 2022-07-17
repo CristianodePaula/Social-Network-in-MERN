@@ -1,3 +1,37 @@
+import React from "react"
+import styled from "styled-components"
+import Posts from "../../components/Posts/Posts"
+import ProfileCard from "../../components/ProfileCard/ProfileCard"
+import Leftbar from "../../components/Leftbar/Leftbar"
+import Rightbar from "../../components/Rightbar/Rightbar"
+import "./Profile.css"
+
+export const ProfileTop = styled.div`
+  position: relative;
+  display: grid;
+  grid-template-columns: 18rem auto 20rem;
+  gap: 1rem;
+`
+export const ProfileCenter = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`
+
+const Profile = () => {
+  return (
+    <ProfileTop>
+      <Leftbar />
+      <rofileCenter>
+        <ProfileCard location="profilePage"/>
+      <Posts/>
+      </rofileCenter>
+      <Rightbar/>
+    </ProfileTop>
+  )
+}
+
+/*
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Topbar from '../../components/Topbar/Topbar'
@@ -134,3 +168,6 @@ export default function Profile() {
     </>
   )
 }
+*/
+
+export default Profile

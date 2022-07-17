@@ -9,6 +9,7 @@ const UserRoute = require("./routes/UserRoute")
 const PostRoute = require("./routes/PostRoute")
 const PageRoute = require("./routes/PageRoute")
 const ContactRoute = require("./routes/ContactRoute")
+const UploadRoute = require("./routes/UploadRoute")
 
 const app = express()
 
@@ -37,9 +38,10 @@ mongoose.connect(process.env.DATABASE, {
 
 app.use('/auth', AuthRoute)
 app.use('/user', UserRoute)
-app.use('/post', PostRoute)
+app.use('/posts', PostRoute)
 app.use('/page', PageRoute)
 app.use('/contact', ContactRoute)
+app.use('/upload', UploadRoute)
 
 app.listen(process.env.PORT, ()=> {
     console.log(`Servidor rodando na porta ${process.env.PORT}`)

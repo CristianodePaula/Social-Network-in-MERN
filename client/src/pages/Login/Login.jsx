@@ -61,6 +61,7 @@ export const Button = styled.button`
   background: red;
   color: white;
   margin-bottom: 40px;
+  cursor: pointer;
 `
 export const Span = styled.span`
   color: red;

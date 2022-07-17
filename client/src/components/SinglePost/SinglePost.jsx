@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
 import Comment from '../../img/comment.png'
 import Share from '../../img/share.png'
 import Heart from '../../img/like.png'
 import NotLike from '../../img/notlike.png'
+import { likePost } from "../../api/PostsRequests"
+import { useSelector } from "react-redux"
 
 const Container = styled.div`
 display: flex;
@@ -25,15 +27,34 @@ gap: 1.5rem;
 `
 
 export default function SinglePost({ data }) {
+  
+    const { user } = useSelector((state) => state.authReducer.authData)
+    const [liked, setLiked] = useState(data.likes.includes(user._id));
+    const [likes, setLikes] = useState(data.likes.length)
+  
+    const handleLike = () => {
+        likePost(data._id, user._id)
+        setLiked((prev) => !prev)
+        liked? setLikes((prev)=>prev-1): setLikes((prev)=>prev+1)
+      }
+
     return (
         <Container>
-            <ImagePost src={data.img} alt="" />
+            <ImagePost  
+                src={data.image ? process.env.REACT_APP_PUBLIC_FOLDER + data.image : "" } 
+                alt="" />
             <PostBox>
-                <img src={data.liked ? Heart : NotLike} alt="" />
+                <img 
+                    src={liked ? Heart : NotLike} 
+                    alt="" 
+                    onClick={handleLike}
+                    />
                 <img src={Comment} alt="" />
                 <img src={Share} alt="" />
             </PostBox>
-            <span style={{ color: "var(--gray)", fontSize: '12px' }}>{data.likes} likes</span>
+            <span style={{ color: "var(--gray)", fontSize: '12px' }}>
+                {likes} likes
+            </span>
             <div className="detail">
                 <span><b>{data.name}</b></span>
                 <span> {data.desc}</span>
