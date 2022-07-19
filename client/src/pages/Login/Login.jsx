@@ -58,7 +58,7 @@ export const Button = styled.button`
   width: 310px;
   border-radius: 10px;
   border: none;
-  background: red;
+  background: blue;
   color: white;
   margin-bottom: 40px;
   cursor: pointer;
@@ -112,7 +112,7 @@ export default function Login() {
         />
         <Button 
           type='submit'
-        >Registrar
+        >Entrar
         </Button>
         <Link to='/register' style={{textDecoration: 'none'}}>
             <Span>Registrar</Span>

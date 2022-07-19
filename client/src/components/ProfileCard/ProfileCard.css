@@ -1,0 +1,157 @@
+.ProfileCard {
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 1rem;
+    overflow-x: clip;
+    background: gainsboro;
+  }
+  
+  /* Profile Images */
+  .ProfileImages {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ProfileImages > img:nth-of-type(1) {
+    height: 200px;
+    width: 300px;
+    object-fit: cover;
+  }
+  .ProfileImages > img:nth-of-type(2) {
+    width: 6rem;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -3rem;
+    box-shadow: var(--profileShadow);
+  }
+  
+  /* Profile Name */
+  .ProfileName {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    gap: 10px;
+  }
+  
+  .ProfileName > span:nth-of-type(1) {
+    font-weight: bold;
+  }
+  
+  /* Follow Status */
+  .followStatus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  
+  .followStatus > hr {
+    width: 85%;
+    border: 1px solid var(--hrColor);
+  }
+  
+  .followStatus > div {
+    display: flex;
+    gap: 1rem;
+    width: 80%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .follow {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: center;
+    justify-content: center;
+  }
+  .follow > span:nth-of-type(1) {
+    font-weight: bold;
+  }
+  
+  .follow > span:nth-of-type(2) {
+    color: var(--gray);
+    font-size: 13px;
+  }
+  
+  .vl {
+    height: 150%;
+    border-left: 2px solid var(--hrColor);
+  }
+  
+  .ProfileCard>span
+  {
+      font-weight: bold;
+      color: orange;
+      align-self: center;
+      margin-bottom: 1rem;
+      cursor: pointer;
+  }
+
+  /*
+
+const Container = styled.div`
+  height: 320px;
+  width: 260px;
+  border: 1px solid black;
+  border-radius: 20px;
+  overflow-x: clip;
+  position: relative;
+`
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+const BackgroundPic = styled.img`
+  width: 260px;
+  height: 120px;
+  object-fit: cover;
+`
+const ProfilePic = styled.img`
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  margin-bottom: 40px;
+  border: 4px solid white;
+`
+const Username = styled.h2`
+  margin-top: 40px;
+  font-size: 20px;
+`
+const Line = styled.div`
+  width: 200px;
+  border-bottom: 1px solid black;
+`
+const InfoContainer = styled.div`
+  height: 80px;
+  width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+`
+const Span = styled.div`
+  margin-bottom: 10px;
+  font-size: 15px;
+`
+const Info = styled.div`
+  font-size: 12px;
+`
+const Perfil = styled.span`
+  color: red;
+  position: absolute;
+  bottom: 5%;
+  cursor: pointer;
+`
+  */

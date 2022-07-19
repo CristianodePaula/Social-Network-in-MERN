@@ -15,7 +15,8 @@ border-radius: 1rem;
 gap: 1rem;
 `
 const ImagePost = styled.img`
-width: 100%;
+height: 350px;
+width: 600px;
 max-height: 20rem;
 object-fit: cover;
 border-radius: 0.5rem;
@@ -28,16 +29,17 @@ gap: 1.5rem;
 
 export default function SinglePost({ data }) {
   
-    const { user } = useSelector((state) => state.authReducer.authData)
+    const { user } = useSelector((state) => state.authReducer.authData);
     const [liked, setLiked] = useState(data.likes.includes(user._id));
     const [likes, setLikes] = useState(data.likes.length)
   
+    
     const handleLike = () => {
-        likePost(data._id, user._id)
-        setLiked((prev) => !prev)
-        liked? setLikes((prev)=>prev-1): setLikes((prev)=>prev+1)
-      }
-
+      likePost(data._id, user._id);
+      setLiked((prev) => !prev);
+      liked? setLikes((prev)=>prev-1): setLikes((prev)=>prev+1)
+    };
+    
     return (
         <Container>
             <ImagePost  

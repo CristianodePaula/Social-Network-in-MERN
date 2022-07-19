@@ -50,7 +50,7 @@ const loginUser = async (req, res) => {
       res.status(404).json("Usuário não encontrado")
     }
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json(err)
   }
 }
 

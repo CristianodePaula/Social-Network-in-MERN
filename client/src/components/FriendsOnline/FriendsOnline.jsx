@@ -1,62 +1,83 @@
 import React from 'react'
-import styled from 'styled-components'
+/*
+import {
+  Container,
+  Wrapper,
+  UserOn,
+  ProfilePic,
+  OnOff,
+  Name
+} from './FriendsOnlineStyle'
+*/
 import { followersData } from '../../resources/Data'
 
-const Container = styled.div`
+import styled from "styled-components"
+
+export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    
+    justify-content: center;
+    margin-bottom: 40px;
 `
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
     background: silver;
-    width: 260px;
-    padding: 10px;
+    width: 270px;
     border-radius: 20px;
 `
-const Title = styled.h2`
-    font-size: 20px;   
+export const Title = styled.h2`
+    font-size: 15px;   
 `
-const ProfilePic = styled.img`
-    height: 40px;
-    width: 40px;
+export const User = styled.div`
+  display: flex;
+  flex-direction: grid;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  width: 60%;
+`
+export const ProfilePic = styled.img`
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
     object-fit: cover;
     margin: 10px;
 `
-const UserOn = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
-const OnOff = styled.span`
+export const OnOff = styled.a`
     height: 12px; 
     width: 12px;
     border-radius: 50%;
     background: green;
     position: absolute;
-    margin-right: 60px;
-    margin-bottom: 22px;
-    
+    margin-Left: 45px;
+    margin-bottom: 20px;
 `
-const Name = styled.span``
+export const Name = styled.span``
+
+const Teste = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
 export default function FriendsOnline() {
   return (
     <Container>
-        <Title>Amigos Online</Title>
-        <Wrapper>
-            {followersData.map((userOn, index)=>{
-                return (
-                <UserOn>
-                <ProfilePic src={userOn.img} />
-                <OnOff />
-                <Name>{userOn.name}</Name>
-                </UserOn> 
-                )
-            })}
-        </Wrapper>
+      <Wrapper>
+      <Title>Amigos Online</Title>
+      <Teste>
+        {followersData.map((userOn, index) => {
+          return (
+            <User>
+              <ProfilePic src={userOn.img} />
+              <OnOff />
+              <Name>{userOn.name}</Name>
+            </User>
+          )
+        })}
+        </Teste>
+      </Wrapper>
     </Container>
   )
 }

@@ -1,66 +1,80 @@
-import React from 'react'
+import React from "react"
+import "./ProfileCard.css"
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
+import { FaUserAlt } from 'react-icons/fa'
 import { useSelector } from "react-redux"
 
 const Container = styled.div`
-  height: 320px;
-  width: 260px;
-  border: 1px solid black;
-  border-radius: 20px;
-  overflow-x: clip;
+  border-radius: 1.5rem;
+  display: flex;
+  height: 300px;
+  flex-direction: column;
   position: relative;
+  gap: 1rem;
+  overflow-x: clip;
+  background: gainsboro;
+  margin-bottom: 10px
 `
-const Wrapper = styled.div`
+export const ProfileImages = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 `
-const BackgroundPic = styled.img`
-  width: 260px;
-  height: 120px;
+export const ImgCover = styled.img`
+  height: 150px;
+  width: 300px;
   object-fit: cover;
+  
 `
-const ProfilePic = styled.img`
-  height: 50px;
-  width: 50px;
+export const ImgProfile = styled.img`
+  height: 80px;
+  width: 80px;
   border-radius: 50%;
   object-fit: cover;
-  position: absolute;
-  margin-bottom: 40px;
-  border: 4px solid white;
+  margin-top: -40px;
 `
-const Username = styled.h2`
-  margin-top: 40px;
+export const ProfileName = styled.h1`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 20px;
+  margin-top: -10px;
 `
-const Line = styled.div`
-  width: 200px;
-  border-bottom: 1px solid black;
-`
-const InfoContainer = styled.div`
-  height: 80px;
-  width: 160px;
+export const FollowStatus = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   text-align: center;
+  margin-top: -20px;
 `
-const Span = styled.div`
+export const Status = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+`
+export const Span = styled.span`
   margin-bottom: 10px;
+`
+export const Number = styled.span`
+  color: blue;
+`
+export const Icon = styled.a`
+  margin: 5px;
+`
+const LinkPerfil = styled.div`
+  text-align: center; 
+  display: flex;
+  flex-direction: column;
   font-size: 15px;
+  margin-bottom: 10px;
+  margin-top: -10px;
+  color: orangered;
 `
-const Info = styled.div`
-  font-size: 12px;
-`
-const Perfil = styled.span`
-  color: red;
-  position: absolute;
-  bottom: 5%;
-  cursor: pointer;
-`
-export default function ProfileCard({ location }) {
+
+const ProfileCard = ({ location }) => {
 
   const { user } = useSelector((state) => state.authReducer.authData)
   const posts = useSelector((state) => state.postReducer.posts)
@@ -68,50 +82,66 @@ export default function ProfileCard({ location }) {
 
   return (
     <Container>
-      <Wrapper>
-        <BackgroundPic src={
+        <Link to={`/profile/${user._id}`} style={{ textDecoration: "none", color: "inherit" }}>
+              Ir Perfil
+            </Link>
+      <ProfileImages>
+        <ImgCover src={
           user.coverPicture
             ? serverPublic + user.coverPicture
             : serverPublic + "defaultCover.jpg"
-        }
+        } alt="CoverImage" />
+        <ImgProfile
+          src={
+            user.profilePicture
+              ? serverPublic + user.profilePicture
+              : serverPublic + "defaultProfile.png"
+          }
+          alt="ProfileImage"
         />
-        <ProfilePic src={
-          user.profilePicture
-            ? serverPublic + user.profilePicture
-            : serverPublic + "defaultProfile.png"
-        } />
-        <Username>{user.fistname}{user.lastname}</Username>
-        <span>{user.worksAt ? user.worksAt : 'Escreva algo sobre você'}</span>
-        <Line />
-        <InfoContainer>
-          <div>
-            <Span>Seguidores</Span>
-            <Info>{user.followers.length}</Info>
-          </div>
-          <div>
-            <Span>Seguindo</Span>
-            <Info>{user.following.length}</Info>
-          </div>
-          {location === "profilePage" && (
-            <>
-              <div></div>
-              <div>
-                <span>{
-                  posts.filter((post) => post.userId === user._id).length
-                }</span>
-                <span>Posts</span>
-              </div>{" "}
-            </>
-          )}
-        </InfoContainer>
-        {location === "profilePage"  ? (
-          ""
-        ) : (
-          <Link to={`/profile/${user._id}`}>
-            <Perfil>Perfil</Perfil>
-          </Link>
+      </ProfileImages>
+      <ProfileName>
+        {user.firstname} {user.lastname}
+      </ProfileName>
+      <FollowStatus>
+        <hr />
+        <Status>
+          <Span>Seguidores</Span>
+          <Number>{user.followers.length}</Number>
+        </Status>
+        <Status>
+          <Span>Seguindo</Span>
+          <Number>{user.following.length}</Number>
+        </Status>
+        <Status>
+        {location === "profilePage" && (
+          <>
+            <Span>Postagens</Span>
+            <Number>{
+              posts.filter((post) => post.userId === user._id).length
+            }</Number>
+            {" "}
+          </>
         )}
-      </Wrapper>
+        </Status>
+        <hr />
+      </FollowStatus>
+      {location === "profilePage" ? (
+        ""
+      ) : (
+        <div styled={{ display: 'flex', flexDirection: 'column' }}>
+          <LinkPerfil>
+            <Icon>
+              <FaUserAlt />
+            </Icon>
+            <Link to={`/profile/${user._id}`} style={{ textDecoration: "none", color: "inherit" }}>
+              Ir Perfil
+            </Link>
+          </LinkPerfil>
+        </div>
+      )}
     </Container>
   )
 }
+
+export default ProfileCard

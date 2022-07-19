@@ -1,4 +1,4 @@
-const ContactModel = require ("../models/Contact")
+const MessageModel = require ("../models/Message")
 const mongoose = require('mongoose')
 
 const createContact = async (req, res) => {

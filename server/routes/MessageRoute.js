@@ -2,7 +2,7 @@ const express = require('express')
 const {
     createContact,
     deleteContact
-} = require("../controllers/ContactController")
+} = require("../controllers/MessageController")
 
 const router = express.Router()
 

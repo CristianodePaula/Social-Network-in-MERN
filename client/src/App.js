@@ -13,7 +13,7 @@ export default function App() {
   return (
     <>
       <Routes>
-      <Route
+        <Route
           path="/"
           element={user ? <Navigate to="home" /> : <Navigate to="/login" />}
         />
@@ -21,15 +21,18 @@ export default function App() {
           path="/home"
           element={user ? <Home /> : <Navigate to="../login" />}
         />
-          <Route
+
+        <Route
           path="/profile/:id"
-          element={user ? <Profile /> : <Navigate to="../auth" />}
+          element={user ? <Profile /> : <Navigate to="../login" />}
         />
         <Route
           path="/login"
           element={user ? <Navigate to="../home" /> : <Login />}
         />
-        <Route path='/register' element={<Register />} />
+        <Route
+          path='/register'
+          element={user ? <Navigate to="../home" /> : <Register />} />
         <Route
           path="*"
           element={
@@ -39,7 +42,6 @@ export default function App() {
           }
         />
       </Routes>
-
     </>
   )
 }

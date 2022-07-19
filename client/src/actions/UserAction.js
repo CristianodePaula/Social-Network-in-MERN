@@ -1,6 +1,5 @@
 import * as UserApi from "../api/UserRequests"
 
-
 export const updateUser=(id, formData)=> async(dispatch)=> {
     dispatch({type: "UPDATING_START"})
     try{
@@ -12,7 +11,6 @@ export const updateUser=(id, formData)=> async(dispatch)=> {
         dispatch({type: "UPDATING_FAIL"})
     }
 }
-
 
 export const followUser = (id, data)=> async(dispatch)=> {
     dispatch({type: "FOLLOW_USER", data: id})

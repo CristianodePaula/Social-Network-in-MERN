@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import { FaSearch, FaUserAlt, FaBell, FaMailBulk } from 'react-icons/fa'
+import { FaSearch, FaUserCog, FaRocketchat, FaSignOutAlt, FaHourglassStart } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+import ConfigModal from "../ConfigModal/ConfigModal" 
+import { useDispatch } from "react-redux"
+import { logout } from "../../actions/AuthActions"
+import { useSelector } from "react-redux"
+import { useParams } from "react-router-dom"
 
 const Container = styled.div`
   height: 50px;
@@ -26,19 +32,31 @@ const Logo = styled.span`
   text-transform: uppercase;
   color: white;
 `
+const IconSearch = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 15px;
+  color: black;  
+  margin-left: 10px;
+  cursor: pointer;
+  color: grey;
+`
 const Input = styled.input`
   border: none;
-  padding-left: 5px;
   outline: 0px;
+  font-size: 15px;
+  margin-left: 10px;
 `
 const Icon = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  font-size: 15px;
-  color: black;
-  margin: 7px;
+  font-size: 20px;
+  color: black;  
+  margin-left: 15px;
   cursor: pointer;
+  color: white;
 `
 const SocialName = styled.div`
   flex: 6;
@@ -52,40 +70,68 @@ const Right = styled.div`
   align-items: center;
   justify-content: flex-end;
 `
-const ProfilePic = styled.img`
-  height: 30px;
-  width: 30px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-left: 10px;
-  cursor: pointer;
+export const Button = styled.button`
+  width: 2.5rem;
+  height: 1.5rem;
+  border: none
+  aling-items: center;
+  color: white;
+  background: blue;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 10px;
 `
 export default function Topbar() {
+
+  const params = useParams()
+  const profileUserId = params.id
+  const { user } = useSelector((state) => state.authReducer.authData)
+  const dispatch = useDispatch()
+  const [modalOpened, setModalOpened] = useState(false);
+
+  const handleLogOut = () => {
+    dispatch(logout())
+  }
+
   return (
     <Container>
       <Wrapper>
         <Search>
-          <Icon>
+          <IconSearch>
             <FaSearch />
             <Input placeholder="O que está procurando?" />
-          </Icon>
+          </IconSearch>
         </Search>
         <SocialName>
           <Logo>Casa Animal</Logo>
         </SocialName>
         <Right>
+          {user._id !== profileUserId ? (
+            ''
+          ) : (
+            <Link to='/home'>
+              <Icon>
+                <FaHourglassStart />
+              </Icon>
+            </Link>
+          )}
           <Icon>
-            <FaUserAlt />
+            <FaRocketchat />
           </Icon>
           <Icon>
-            <FaMailBulk />
+            <FaUserCog onClick={() => setModalOpened(true)} />
           </Icon>
+          <ConfigModal
+            modalOpened={modalOpened}
+            setModalOpened={setModalOpened}
+          />
           <Icon>
-            <FaBell />
+            <FaSignOutAlt onClick={handleLogOut} />
           </Icon>
-          <ProfilePic src="https://images.pexels.com/photos/799420/pexels-photo-799420.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" />
         </Right>
       </Wrapper>
     </Container>
   )
 }
+

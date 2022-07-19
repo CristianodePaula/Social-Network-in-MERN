@@ -1,21 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { dataSlider } from '../../resources/Data'
-import styled from 'styled-components'
+import {
+    Container,
+    Image
+ } from './BannerStyle'
 
-export const Container = styled.div`
-    height: 250px;
-    width: 250px;
-    display: flex;
-    justify-content: center;
-    background: #000;
-    overflow: hidden;
-    border-radius: 20px;
-`
-export const Image = styled.img`
-    width: 300px;
-    height: 300px;    
-    object-fit: cover;
-`
+
 export default function Banner({ slides }) {
 
     const [current, setCurrent] = useState(0)
@@ -43,6 +33,7 @@ export default function Banner({ slides }) {
                     {index === current && (
                         <div>
                             <Image src={slide.url} />
+                            
                         </div>
                     )}
                 </div>

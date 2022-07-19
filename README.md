@@ -1,3 +1,31 @@
+## ERRO Uncaught TypeError: Cannot read properties of undefined (reading 'includes') at SinglePost (SinglePost.jsx:32:1)
+# Ao submeter a postagem na linha do tempo
+
+## FASE 1 - LEYOUT/PAGINAS/RESPONSIVIDADE/FRONT-END FINAL 
+## FASE 2 - FUNCIONALIDADES/TESTES
+## FASE 1 - REFATORAÇÃO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # SOCIAL NETWORK
 
 Click to watch the video on youtube 
@@ -37,9 +65,3 @@ This code is Open Source
 ## 🎁 Thanks
 
 
-
-
-#### ERROS 
-
-# Uncaught TypeError: Cannot read properties of undefined (reading 'includes') at SinglePost (SinglePost.jsx:32:1)
-# Ao submeter a postagem na linha do tempo

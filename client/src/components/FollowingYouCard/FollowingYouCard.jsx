@@ -1,78 +1,90 @@
-import React from 'react'
+import React, { useEffect, useState } from "react"
+import "./FollowersCard.css"
+import FollowersModal from "../FollowersModal/FollowersModal"
+import { getAllUser } from "../../api/UserRequests"
+import User from "../User/User"
+import { useSelector } from "react-redux"
 import styled from 'styled-components'
-import { followersData } from '../../resources/Data'
 
 export const Container = styled.div`
-  width: 260px;
-  background: gainsboro;
+  width: 93%;
+  height: 100%;
   border-radius: 20px;
-`
-export const Wrapper = styled.div`
-  margin-top: 40px;
+  background: red;
+  display: flex;
   padding: 10px;
-`
-export const Title = styled.div`
-  font-size: 20px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-`
-export const BoxFollower = styled.div`
-  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  background: gainsboro;
   align-items: center;
-  justify-content: space-between;
+  margin-bottom: 40px;
 `
-export const BoxImgName = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-`
-export const BoxName = styled.div`
+export const Users = styled.div`
   display: flex;
   flex-direction: column;
 `
-export const Name = styled.span`
-`
-export const Username = styled.span`
-`
-export const Image = styled.img`
-  height: 40px;
-  width: 40px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-right: 10px;
-`
-export const Button = styled.button`
-  height: 30px;
-  width: 60px;
+export const H1 = styled.h1`
   font-size: 15px;
-  border: none;
-  border-radius: 10px;
-  background: orange;
-  color: white;
-  cursor: pointer;
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
-export default function FollowingYouCard() {
+export const Span = styled.span`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: orangered;
+  margin-top: 10px;
+  cursor: pointer;
+`
+const FollowersCard = ({ location }) => {
+  const [modalOpened, setModalOpened] = useState(false)
+  const [persons, setPersons] = useState([])
+  const { user } = useSelector((state) => state.authReducer.authData)
+
+  useEffect(() => {
+    const fetchPersons = async () => {
+      const { data } = await getAllUser()
+      setPersons(data)
+    }
+    fetchPersons()
+  }, [])
+
   return (
     <Container>
-      <Wrapper>
-        <Title>Pessoas que seguem você</Title>
-        {followersData.map((follower, id) => {
-          return (
-            <BoxFollower>
-              <BoxImgName>
-                <Image src={follower.img} alt="" className='followerImage' />
-                <BoxName>
-                  <Name>{follower.name}</Name>
-                  <Username>@{follower.username}</Username>
-                </BoxName>
-              </BoxImgName>
-              <Button>Seguir</Button>
-            </BoxFollower>
-          )
+      <H1>Sugestões de amizade</H1>
+      <Users>
+        {persons.map((person, id) => {
+          if (person._id !== user._id)
+            return <User person={person} key={id} />
         })}
-      </Wrapper>
+        <Span onClick={() => setModalOpened(true)}> Visualizar </Span>
+      </Users>
+      <FollowersModal
+        modalOpened={modalOpened}
+        setModalOpened={setModalOpened}
+      />
     </Container>
   )
 }
+
+export default FollowersCard
+
+/*
+ <Container>
+      <H1>Sugestões de amizade</H1>
+      {persons.map((person, id) => {
+      if (person._id !== user._id) 
+        return <User person={person} key={id} />
+      })}
+      {!location ? (
+      <Span onClick={() => setModalOpened(true)}>Veja todos</Span>
+      ) : (
+        ""
+      )}
+      <FollowersModal
+        modalOpened={modalOpened}
+        setModalOpened={setModalOpened}
+      />
+    </Container>
+*/

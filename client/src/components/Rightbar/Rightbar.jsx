@@ -13,18 +13,16 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: 10px;
-`
-export const Title = styled.h2`
-  font-size: 20px;
+  margin-bottom: 30px;
 `
 export default function Rightbar() {
+
   return (
     <Container>
       <Wrapper>
-      <Title>Animais adotados</Title>
-        <Banner slides={dataSlider}/>
-        <FriendsOnline />
+        <Banner slides={dataSlider} />
       </Wrapper>
+      <FriendsOnline />
     </Container>
   )
 }

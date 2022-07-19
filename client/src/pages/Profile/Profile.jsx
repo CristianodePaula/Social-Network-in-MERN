@@ -5,6 +5,8 @@ import ProfileCard from "../../components/ProfileCard/ProfileCard"
 import Leftbar from "../../components/Leftbar/Leftbar"
 import Rightbar from "../../components/Rightbar/Rightbar"
 import "./Profile.css"
+import Topbar from "../../components/Topbar/Topbar"
+import Profilebar from "../../components/Profilebar/Profilebar"
 
 export const ProfileTop = styled.div`
   position: relative;
@@ -17,17 +19,20 @@ export const ProfileCenter = styled.div`
   flex-direction: column;
   gap: 1rem;
 `
-
 const Profile = () => {
   return (
-    <ProfileTop>
-      <Leftbar />
-      <rofileCenter>
-        <ProfileCard location="profilePage"/>
-      <Posts/>
-      </rofileCenter>
-      <Rightbar/>
-    </ProfileTop>
+    <>
+      <Topbar />
+      <ProfileTop>
+        <Leftbar />
+        <ProfileCenter>
+          <ProfileCard location="profilePage" />
+          <Rightbar />
+          <Posts />
+        </ProfileCenter>
+        <Profilebar />
+      </ProfileTop>
+    </>
   )
 }
 

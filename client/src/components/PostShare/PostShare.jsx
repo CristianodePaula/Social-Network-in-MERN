@@ -11,7 +11,7 @@ import { uploadImage, uploadPost } from "../../actions/UploadAction"
 
 const Container = styled.div`
   height: 120px;
-  width: 100%;
+  width: 600px;
   background: silver;
   border-radius: 20px;
   margin-top: 10px;
@@ -23,17 +23,20 @@ const Wrapper = styled.div`
   padding: 20px;
 `
 const ProfilePic = styled.img`
-  height: 30px;
-  width: 30px;
+  height: 40px;
+  width: 40px;
   object-fit: cover;
   border-radius: 50%;
   cursor: pointer;
+  margin-left: 10px;
 `
 const Input = styled.input`
-  border-radius: 10px;
-  border: none;
   width: 550px;
   height: 30px;
+  border-radius: 10px;
+  border: none;
+  outline:none;
+  padding-left: 15px;
 `
 const Share = styled.div`
   display: flex;
@@ -46,21 +49,22 @@ const Option = styled.a`
   justify-content: space-around;
   flex-direction: row;
   align-items: center;
-  font-size: 25px;
+  font-size: 20px;
   cursor: pointer;
 `
 const Span = styled.span`
-  font-size: 16px;
+  font-size: 15px;
   margin-left: 15px;
 `
 const Button = styled.button`
-  height: 30px;
-  width: 70px;
+  height: 25px;
+  width: 60px;
   font-size: 15px;
   border: none;
   border-radius: 10px;
-  background: orange;
+  background: orangered;
   color: white;
+  margin-bottom: 5px;
   cursor: pointer;
 `
 export default function PostShare() {
@@ -68,8 +72,10 @@ export default function PostShare() {
   const { user } = useSelector((state) => state.authReducer.authData)
   const loading = useSelector((state) => state.postReducer.uploading)
   const dispatch = useDispatch()
-  const [image, setImage] = useState(null)
   const imageRef = useRef()
+  const [image, setImage] = useState(null)
+
+
   const desc = useRef()
   const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER
 
@@ -113,20 +119,21 @@ export default function PostShare() {
   return (
     <Container>
       <Wrapper>
+        <Input
+          type='text'
+          placeholder='O que deseja publicar?'
+          required
+          ref={desc}
+     
+        />
         <ProfilePic src={
           user.profilePicture
             ? serverPublic + user.profilePicture
             : serverPublic + "defaultProfile.png"
         }
         />
-        <Input
-          type='text'
-          placeholder='O que deseja publicar?'
-          required
-          ref={desc}
-        />
       </Wrapper>
-      <Share>
+      <Share >
         <Option
           onClick={() => imageRef.current.click()}
         >
