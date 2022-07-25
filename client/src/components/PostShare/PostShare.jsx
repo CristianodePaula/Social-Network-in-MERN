@@ -126,12 +126,14 @@ export default function PostShare() {
           ref={desc}
      
         />
+                
         <ProfilePic src={
           user.profilePicture
             ? serverPublic + user.profilePicture
             : serverPublic + "defaultProfile.png"
         }
         />
+
       </Wrapper>
       <Share >
         <Option
@@ -152,7 +154,7 @@ export default function PostShare() {
           onClick={handleSubmit}
           disabled={loading}
         >
-          {loading ? "uploading" : "Share"}
+          {loading ? "Enviando" : "Enviar"}
         </Button>
       </Share>
       <div style={{ display: "none" }}>
@@ -161,6 +163,7 @@ export default function PostShare() {
           ref={imageRef}
           onChange={onImageChange}
         />
+        
       </div>
       {image && (
         <div className='previewImage'>
@@ -168,6 +171,7 @@ export default function PostShare() {
           <img src={URL.createObjectURL(image)} alt="preview" />
         </div>
       )}
+      
     </Container>
   )
 }

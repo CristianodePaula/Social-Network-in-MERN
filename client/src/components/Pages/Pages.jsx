@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import User from "../User/User"
+
 
 export const Container = styled.div``
 export const Wrapper = styled.div`
@@ -33,13 +33,12 @@ export default function Friends() {
 
   const { user } = useSelector((state) => state.authReducer.authData)
   const [friends, setFriends] = useState([])
-  const [persons, setPersons] = useState([])
   const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER
 
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const friendList = await axios.get("http://localhost:5000/user/friends/" + user._id)
+        const friendList = await axios.get("http://localhost:5000/pages/" + user._id)
         setFriends(friendList.data)
       } catch (err) {
         console.log(err)
@@ -47,7 +46,7 @@ export default function Friends() {
     }
     getFriends()
   }, [user])
-//username
+
    return (
     <Container>
       <Wrapper>
@@ -55,7 +54,7 @@ export default function Friends() {
         <FriendsContainer>
           {friends.map((friend) => (
             <Link
-              to={"/profile/" + friend._id}
+              to={"/profile/" + friend.username}
               style={{ textDecoration: "none" }}
             >
               <FriendUnit>

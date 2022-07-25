@@ -22,8 +22,8 @@ export const Container = styled.div`
     margin-bottom: 40px;
 `
 export const Wrapper = styled.div`
-    background: silver;
     width: 270px;
+    border: 1px solid silver;
     border-radius: 20px;
 `
 export const Title = styled.h2`
@@ -48,7 +48,6 @@ export const OnOff = styled.a`
     height: 12px; 
     width: 12px;
     border-radius: 50%;
-    background: green;
     position: absolute;
     margin-Left: 45px;
     margin-bottom: 20px;

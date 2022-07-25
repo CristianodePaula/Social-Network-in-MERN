@@ -27,7 +27,6 @@ const Profile = () => {
         <Leftbar />
         <ProfileCenter>
           <ProfileCard location="profilePage" />
-          <Rightbar />
           <Posts />
         </ProfileCenter>
         <Profilebar />

@@ -26,13 +26,11 @@ display: flex;
 align-items: flex-start;
 gap: 1.5rem;
 `
-
 export default function SinglePost({ data }) {
   
     const { user } = useSelector((state) => state.authReducer.authData);
     const [liked, setLiked] = useState(data.likes.includes(user._id));
     const [likes, setLikes] = useState(data.likes.length)
-  
     
     const handleLike = () => {
       likePost(data._id, user._id);

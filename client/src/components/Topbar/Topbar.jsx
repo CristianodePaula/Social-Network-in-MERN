@@ -1,8 +1,15 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { FaSearch, FaUserCog, FaRocketchat, FaSignOutAlt, FaHourglassStart } from 'react-icons/fa'
+import { 
+  FaSearch, 
+  FaUserCog, 
+  FaRocketchat, 
+  FaSignOutAlt, 
+  FaNewspaper, 
+  FaBackspace 
+} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import ConfigModal from "../ConfigModal/ConfigModal" 
+import ConfigModal from "../ConfigModal/ConfigModal"
 import { useDispatch } from "react-redux"
 import { logout } from "../../actions/AuthActions"
 import { useSelector } from "react-redux"
@@ -52,9 +59,9 @@ const Icon = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  font-size: 20px;
+  font-size: 25px;
   color: black;  
-  margin-left: 15px;
+  margin-left: 40px;
   cursor: pointer;
   color: white;
 `
@@ -69,6 +76,7 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  
 `
 export const Button = styled.button`
   width: 2.5rem;
@@ -110,11 +118,18 @@ export default function Topbar() {
           {user._id !== profileUserId ? (
             ''
           ) : (
-            <Link to='/home'>
-              <Icon>
-                <FaHourglassStart />
-              </Icon>
-            </Link>
+            <>
+              <Link to='/home'>
+                <Icon>
+                  <FaBackspace />
+                </Icon>
+              </Link>
+              <Link to='/newPage'>
+                <Icon>
+                  <FaNewspaper />
+                </Icon>
+              </Link>
+            </>
           )}
           <Icon>
             <FaRocketchat />

@@ -10,12 +10,12 @@ export const Container = styled.div`
   width: 93%;
   height: 100%;
   border-radius: 20px;
-  background: red;
+  border: 1px solid silver;
   display: flex;
   padding: 10px;
   flex-direction: column;
   font-size: 13px;
-  background: gainsboro;
+
   align-items: center;
   margin-bottom: 40px;
 `

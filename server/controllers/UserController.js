@@ -70,7 +70,6 @@ const updateUser = async (req, res) => {
   }
 };
 
-// Delete a user
 const deleteUser = async (req, res) => {
   const id = req.params.id;
 
@@ -88,8 +87,6 @@ const deleteUser = async (req, res) => {
   }
 };
 
-// Follow a User
-// changed
 const followUser = async (req, res) => {
   const id = req.params.id;
   const { _id } = req.body;
@@ -130,7 +127,6 @@ const unfollowUser = async (req, res) => {
       const unFollowUser = await UserModel.findById(id)
       const unFollowingUser = await UserModel.findById(_id)
 
-
       if (unFollowUser.followers.includes(_id))
       {
         await unFollowUser.updateOne({$pull : {followers: _id}})
@@ -146,11 +142,33 @@ const unfollowUser = async (req, res) => {
   }
 };
 
+const getAllFriends = async (req, res) => {
+  try {
+    const user = await UserModel.findById(req.params.userId);
+    const friends = await Promise.all(
+      user.following.map((friendId) => {
+        return UserModel.findById(friendId);
+      })
+    );
+    let friendList = [];
+    friends.map((friend) => {
+      const { _id, username, profilePicture } = friend;
+      friendList.push({ _id, username, profilePicture });
+    });
+    res.status(200).json(friendList)
+  } catch (err) {
+    res.status(500).json(err);
+  }
+} 
+
+
+
 module.exports = { 
   getUser,
   getAllUsers,
   updateUser,
   deleteUser,
   followUser,
-  unfollowUser
+  unfollowUser,
+  getAllFriends
 }
