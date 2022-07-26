@@ -8,13 +8,13 @@ import { useSelector } from "react-redux"
 const Container = styled.div`
   border-radius: 1.5rem;
   display: flex;
-  height: 400px;
+  height: 340px;
   flex-direction: column;
   position: relative;
   gap: 1rem;
   overflow-x: clip;
   background: gainsboro;
-  margin-bottom: 10px
+  margin-bottom: 40px
 `
 export const ProfileImages = styled.div`
   position: relative;
@@ -24,7 +24,7 @@ export const ProfileImages = styled.div`
   justify-content: center;
 `
 export const ImgCover = styled.img`
-  height: 150px;
+  height: 120px;
   width: 300px;
   object-fit: cover;
 `

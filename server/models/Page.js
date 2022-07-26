@@ -2,9 +2,9 @@ const mongoose = require('mongoose')
 
 const PageSchema = mongoose.Schema(
     {
+     
         pagename: {
             type: String,
-            required: true
         },
         isAdmin : {
             type: Boolean,
@@ -12,6 +12,7 @@ const PageSchema = mongoose.Schema(
         },
         profilePicture: String,
         coverPicture: String,
+        desc: String,
         about: String,
         address: String,
         livesin: String,

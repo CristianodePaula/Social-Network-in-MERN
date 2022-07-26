@@ -10,10 +10,12 @@ import {
 } from './FriendsOnlineStyle'
 */
 import { followersData } from '../../resources/Data'
+import { Link } from 'react-router-dom'
 
 import styled from "styled-components"
 
 export const Container = styled.div`
+    height: 380px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,6 +61,9 @@ const Teste = styled.div`
   flex-direction: column;
   align-items: center;
 `
+export const Span = styled.span`
+  font-size: 15px;
+` 
 
 export default function FriendsOnline() {
   return (
@@ -76,6 +81,10 @@ export default function FriendsOnline() {
           )
         })}
         </Teste>
+        
+            <Link to='/home'>
+              <Span>Ver todos</Span>
+            </Link>
       </Wrapper>
     </Container>
   )

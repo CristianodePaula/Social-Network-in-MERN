@@ -69,13 +69,10 @@ const Button = styled.button`
 `
 export default function PostShare() {
 
+  const dispatch = useDispatch()
   const { user } = useSelector((state) => state.authReducer.authData)
   const loading = useSelector((state) => state.postReducer.uploading)
-  const dispatch = useDispatch()
-  const imageRef = useRef()
   const [image, setImage] = useState(null)
-
-
   const desc = useRef()
   const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER
 
@@ -86,6 +83,8 @@ export default function PostShare() {
     }
   }
 
+  const imageRef = useRef()
+ 
   const handleSubmit = async (e) => {
     e.preventDefault()
 

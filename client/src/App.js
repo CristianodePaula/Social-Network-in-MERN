@@ -5,6 +5,7 @@ import Profile from './pages/Profile/Profile'
 import Register from './pages/Register/Register'
 import Login from './pages/Login/Login'
 import NewPage from './pages/NewPage/NewPage'
+import Chat from './pages/Chat/Chat'
 import { useSelector } from "react-redux"
 
 export default function App() {
@@ -35,10 +36,15 @@ export default function App() {
           path='/register'
           element={user ? <Navigate to="../home" /> : <Register />}
         />
-     
+
         <Route
           path="/newpage"
           element={user ? <NewPage /> : <Navigate to="../login" />}
+        />
+
+        <Route
+          path="/chat"
+          element={user ? <Chat /> : <Navigate to="../login" />}
         />
 
         <Route

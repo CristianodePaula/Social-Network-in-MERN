@@ -6,9 +6,9 @@ import { useParams } from "react-router-dom"
 import { getTimelinePosts } from "../../actions/PostsAction"
 
 const Container = styled.div`
- display: flex;
- flex-direction: column;
- gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `
 export default function Posts() {
   

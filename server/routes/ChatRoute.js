@@ -1,5 +1,5 @@
 const express = require('express')
-const {  createChat, userChats, findChat } = require("../controllers/ChartController")
+const {  createChat, userChats, findChat } = require("../controllers/ChatController")
 const router = express.Router()
 
 router.post('/', createChat)

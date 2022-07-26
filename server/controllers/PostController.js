@@ -61,15 +61,14 @@ const deletePost = async (req, res) => {
 const likePost = async (req, res) => {
   const id = req.params.id
   const { userId } = req.body
-
   try {
     const post = await PostModel.findById(id)
-    if (!post.likes.includes(userId)) {
-      await post.updateOne({ $push: { likes: userId } })
-      res.status(200).json("Post curtido")
-    } else {
+    if (post.likes.includes(userId)) {
       await post.updateOne({ $pull: { likes: userId } })
-      res.status(200).json("Post descurtido")
+      res.status(200).json("Postagem curtida com sucesso")
+    } else {
+      await post.updateOne({ $push: { likes: userId } })
+      res.status(200).json("Postagem descurtida com sucesso")
     }
   } catch (error) {
     res.status(500).json(error)

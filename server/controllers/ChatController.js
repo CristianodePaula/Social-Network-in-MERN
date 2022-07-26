@@ -1,4 +1,4 @@
-const ChartModel= require( "../models/Chart")
+const ChatModel= require( "../models/Chat")
 
 const createChat = async (req, res) => {
     const newChat = new ChatModel({

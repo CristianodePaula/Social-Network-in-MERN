@@ -4,13 +4,13 @@ import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-
 export const Container = styled.div``
 export const Wrapper = styled.div`
-    background: silver;
+    background: gainsboro;
     height: 300px;
     border-radius: 10px;
     padding: 10px;
+    margin-top: 40px;
 `
 export const Title = styled.h1`
     font-size: 20px;
@@ -38,7 +38,7 @@ export default function Friends() {
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const friendList = await axios.get("http://localhost:5000/pages/" + user._id)
+        const friendList = await axios.get("http://localhost:5000/page"  )
         setFriends(friendList.data)
       } catch (err) {
         console.log(err)
@@ -50,11 +50,11 @@ export default function Friends() {
    return (
     <Container>
       <Wrapper>
-        <Title>Amigos</Title>
+        <Title>Páginas</Title>
         <FriendsContainer>
           {friends.map((friend) => (
             <Link
-              to={"/profile/" + friend.username}
+              to={"/profile/" + friends.username}
               style={{ textDecoration: "none" }}
             >
               <FriendUnit>

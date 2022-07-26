@@ -29,11 +29,13 @@ export const Img = styled.img`
   height: 80px;
   width: 80px;
 `
+
+
 export default function Friends() {
 
   const { user } = useSelector((state) => state.authReducer.authData)
   const [friends, setFriends] = useState([])
-  const [persons, setPersons] = useState([])
+ // const [persons, setPersons] = useState([])
   const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER
 
   useEffect(() => {

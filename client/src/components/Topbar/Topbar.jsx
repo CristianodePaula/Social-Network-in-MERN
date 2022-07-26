@@ -132,7 +132,9 @@ export default function Topbar() {
             </>
           )}
           <Icon>
-            <FaRocketchat />
+            <Link to='/chat' >
+              <FaRocketchat />
+            </Link>
           </Icon>
           <Icon>
             <FaUserCog onClick={() => setModalOpened(true)} />

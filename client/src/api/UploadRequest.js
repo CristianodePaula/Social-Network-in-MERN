@@ -1,6 +1,6 @@
-import axios from "axios"
+import axios from "axios";
 
-const API = axios.create({ baseURL: "http://localhost:5000" })
+const API = axios.create({ baseURL: "http://localhost:5000" });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
@@ -12,5 +12,5 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
-export const uploadImage = (data) => API.post("/upload/", data)
-export const uploadPost = (data) => API.post("/posts", data)
+export const uploadImage = (data) => API.post("/upload/", data);
+export const uploadPost = (data) => API.post("/posts", data);

@@ -61,10 +61,9 @@ const deletePage = async (req, res) => {
 const likePage = async (req, res) => {
   const id = req.params.id
   const { userId } = req.body
-
   try {
     const page = await PageModel.findById(id)
-    if (!page.likes.includes(userId)) {
+    if (page.likes.includes(userId)) {
       await page.updateOne({ $push: { likes: userId } })
       res.status(200).json("Página curtida com sucesso")
     } else {

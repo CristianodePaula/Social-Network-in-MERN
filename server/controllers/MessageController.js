@@ -1,40 +1,31 @@
-const MessageModel = require ("../models/Message")
-const mongoose = require('mongoose')
+const MessageModel = require ("../Models/Message")
 
-const createContact = async (req, res) => {
-  const newContact = new ContactModel(req.body)
-
+const addMessage = async (req, res) => {
+  const { chatId, senderId, text } = req.body;
+  const message = new MessageModel({
+    chatId,
+    senderId,
+    text,
+  });
   try {
-    await newContact.save()
-    res.status(200).json("Menssagem enviada com sucesso!")
+    const result = await message.save();
+    res.status(200).json(result);
   } catch (error) {
-    res.status(500).json(error)
+    res.status(500).json(error);
   }
-}
+};
 
-const getContact = async (req, res) => {
-  const id = req.params.id
-
+const getMessages = async (req, res) => {
+  const { chatId } = req.params;
   try {
-    const contact = await ContactModel.findById(id)
-    res.status(200).json(contact)
+    const result = await MessageModel.find({ chatId });
+    res.status(200).json(result);
   } catch (error) {
-    res.status(500).json(error)
+    res.status(500).json(error);
   }
-}
-
-const deleteContact = async (req, res) => {
- 
-  try {
-    await Contact.findByIdAndDelete(req.params.id)
-      res.status(200).json("Menssagem deletada com sucesso")
-  } catch (error) {
-    res.status(500).json(error)
-  }
-}
+};
 
 module.exports = { 
-  createContact,
-  getContact,
-  deleteContact,
+  addMessage,
+  getMessages
 }
