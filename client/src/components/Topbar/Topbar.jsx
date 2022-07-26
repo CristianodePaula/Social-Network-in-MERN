@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { 
-  FaSearch, 
-  FaUserCog, 
-  FaRocketchat, 
-  FaSignOutAlt, 
-  FaNewspaper, 
-  FaBackspace 
+import {
+  FaSearch,
+  FaUserCog,
+  FaRocketchat,
+  FaSignOutAlt,
+  FaNewspaper,
+  FaBackspace
 } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import ConfigModal from "../ConfigModal/ConfigModal"
@@ -131,11 +131,13 @@ export default function Topbar() {
               </Link>
             </>
           )}
-          <Icon>
-            <Link to='/chat' >
+
+          <Link to='/chat' >
+            <Icon>
               <FaRocketchat />
-            </Link>
-          </Icon>
+            </Icon>
+          </Link>
+
           <Icon>
             <FaUserCog onClick={() => setModalOpened(true)} />
           </Icon>

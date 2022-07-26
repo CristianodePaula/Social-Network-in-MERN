@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import User from "../User/User"
 
 export const Container = styled.div``
 export const Wrapper = styled.div`
@@ -29,8 +28,6 @@ export const Img = styled.img`
   height: 80px;
   width: 80px;
 `
-
-
 export default function Friends() {
 
   const { user } = useSelector((state) => state.authReducer.authData)
@@ -49,7 +46,7 @@ export default function Friends() {
     }
     getFriends()
   }, [user])
-//username
+
    return (
     <Container>
       <Wrapper>

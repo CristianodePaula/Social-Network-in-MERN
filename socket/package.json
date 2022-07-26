@@ -5,5 +5,12 @@
   "dependencies": {
     "nodemon": "^2.0.16",
     "socket.io": "^4.5.1"
-  }
+  },
+  "name": "socket",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

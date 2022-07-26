@@ -5,7 +5,6 @@ import {
     Image
  } from './BannerStyle'
 
-
 export default function Banner({ slides }) {
 
     const [current, setCurrent] = useState(0)

@@ -96,7 +96,7 @@ const ProfileCard = ({ location }) => {
         />
       </ProfileImages>
       <ProfileName>
-        {user.firstname} {user.lastname} 
+        {user.firstname} {user.lastname}
       </ProfileName>
       <FollowStatus>
         <hr />
@@ -140,6 +140,8 @@ const ProfileCard = ({ location }) => {
 }
 
 export default ProfileCard
+
+
 
 
 /*

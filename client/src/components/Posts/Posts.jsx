@@ -12,10 +12,11 @@ const Container = styled.div`
 `
 export default function Posts() {
   
+  const dispatch = useDispatch()
   const { user } = useSelector((state) => state.authReducer.authData)
   let { posts, loading } = useSelector((state) => state.postReducer)
   const params = useParams()
-  const dispatch = useDispatch()
+
 
   useEffect(() => {
     dispatch(getTimelinePosts(user._id))

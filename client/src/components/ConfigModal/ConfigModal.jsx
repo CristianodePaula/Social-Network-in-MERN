@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import { Modal, useMantineTheme } from "@mantine/core"
-import styled from "styled-components"
 import { useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { updateUser } from "../../actions/UserAction"
+import styled from "styled-components"
 
 export const Form = styled.form`
   font-size: 20px;

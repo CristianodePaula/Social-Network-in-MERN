@@ -3,7 +3,6 @@ import styled from "styled-components"
 import Posts from "../../components/Posts/Posts"
 import ProfileCard from "../../components/ProfileCard/ProfileCard"
 import Leftbar from "../../components/Leftbar/Leftbar"
-import Rightbar from "../../components/Rightbar/Rightbar"
 import "./Profile.css"
 import Topbar from "../../components/Topbar/Topbar"
 import Profilebar from "../../components/Profilebar/Profilebar"
@@ -34,6 +33,12 @@ const Profile = () => {
     </>
   )
 }
+
+
+
+
+
+
 
 /*
 import React, { useState } from 'react'

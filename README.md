@@ -17,6 +17,8 @@ Welcome to another fullstack project! This application consists of a social netw
 * Express
 * MongoDB
 * Bcrypt
+* JWT
+* Socket.io
 
 ## 🛠️ Built with
 
