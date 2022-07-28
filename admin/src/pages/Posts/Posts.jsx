@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import SideBar from '../../components/SideBar/SideBar'
 import TopBar from '../../components/TopBar/TopBar'
 import styled from 'styled-components'
 import { mobile } from '../../resources/Responsive'
-import { DataGrid } from '@mui/x-data-grid';
+import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { getAllPosts } from '../../redux/api/PostsRequests'
 
 export const Container = styled.div`
   display: flex;  
@@ -13,123 +15,174 @@ export const Container = styled.div`
 
 })}
 `
-export const Top = styled.div` 
-  flex: 6;   
+export const Wrapper = styled.div` 
+  flex: 6;  
   ${mobile({
   flexDirection: 'column'
 })}
 `
 export const Center = styled.div`
-
-  ${mobile({
-  flexDirection: 'column'
+  padding: 40px;
+`
+export const Table = styled.table`
+  border-collapse: collapse;
+  text-align: center;
+  border-radius: 15px;
+  overflow: hidden;
+`
+export const THead = styled.thead`
+    position: sticky;
+    z-index: 100;
+`
+export const THeadTR = styled.tr`
+    background: grey;
+`
+export const TH = styled.th`
+    font-weight: normal;
+    padding: 10px;
+    color: white;
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 14px;
+    :not(:last-of-type) {
+        border-right: 1px solid black;
+    }
+    :first-of-type {
+        width: 1%;
+        white-space: nowrap;
+    }
+    ${mobile({
+  fontSize: '8px'
 })}
 `
-export default function Posts() {
+export const TBody = styled.tbody``
+export const TBodyTR = styled.tr`
+    background: gainsboro;
+`
+export const TD = styled.td`
+  padding: 10px;
+  border: 1px solid grey;
+  font-size: 14px;
+  ${mobile({
+  fontSize: '7px',
+})}
+`
+export const Img = styled.img`
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit:cover;
+  ${mobile({
+  height: '20px',
+  width: '20px'
+})}
+`
+export const BtnCreate = styled.button`
+  background: blue;
+  width: 80px;
+  padding: 5px;
+  color: white;
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin-bottom: 40px;
+  transition: 0.5s ease-in-out;
+  &:hover {
+    transform: scale(1.1)
+  }
+  ${mobile({
+  width: '40px',
+  height: '20px',
+  fontSize: '8px',
+})}
+`
+export const BtnEdit = styled.button`
+  background: red;
+  width: 80px;
+  padding: 5px;
+  color: white;
+  border: 1px solid grey;
+  border-radius: 5px
+  transition: 0.5s ease-in-out;
+  &:hover {
+    transform: scale(1.1)
+  }
+  ${mobile({
+  width: '40px',
+  height: '20px',
+  fontSize: '8px',
+})}
+`
+export default function Users() {
 
-  
-const columns = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'firstName', headerName: 'First name', width: 130 },
-  { field: 'lastName', headerName: 'Last name', width: 130 },
-  {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
-    width: 90,
-  },
-  {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (params) =>
-      `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-  },
-];
+  const { user } = useSelector((state) => state.authReducer.authData)
 
-const rows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-];
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const getChats = async () => {
+      try {
+        const { data } = await getAllPosts(user._id);
+        setUsers(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getChats();
+  }, [user._id]);
 
   return (
 
     <Container>
       <SideBar />
-      <Top>
+      <Wrapper>
         <TopBar />
         <Center>
-        <div style={{ height: 400, width: '100%' }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
-      />
-      </div>
+          <Link to={"/newuser"}>
+            <BtnCreate
+              type='button'
+              className='btnEdit'
+            > Criar
+            </BtnCreate>
+          </Link>
+          <Table>
+            <THead>
+              <THeadTR>
+                <TH>Imagem</TH>
+                <TH>Nome</TH>
+                <TH>Primeiro Nome</TH>
+                <TH>Segundo Nome</TH>
+                <TH>Editar</TH>
+              </THeadTR>
+            </THead>
+            <TBody>
+            {users.map((user) => {
+                return (
+                  <TBodyTR key={user.id}>
+                    <TD>
+                      <Img src={user.profilePicture
+                        ||
+                        "https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"
+                      } />
+                    </TD>
+                    <TD>{user.userId}</TD>
+                    <TD>{user.desc}</TD>
+                    <TD>{user.createdAt}</TD>
+                    <TD>
+                      <BtnEdit
+                        type="button"
+                      > Excluir
+                      </BtnEdit>
+                    </TD>
+                  </TBodyTR>
+                )
+              })}
+            </TBody>
+          </Table>
         </Center>
-      </Top>
+      </Wrapper>
     </Container>
 
   )
 }
 
 
-/*
-
-import React from 'react'
-import SideBar from '../../components/SideBar/SideBar'
-import TopBar from '../../components/TopBar/TopBar'
-import styled from 'styled-components'
-import {mobile} from '../../resources/Responsive'
-
-export const Container = styled.div`
-  display: flex;  
-  background: grey;
-  ${mobile({
-    flexDirection: 'column',
-    minHeight: '100vh',
-  
-  })}
-`
-export const Top = styled.div` 
-  flex: 6;   
-  ${mobile({
-    flexDirection: 'column'
-  })}
-`
-export const Center = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  ${mobile({
-    flexDirection: 'column'
-  })}
-`
-export default function Posts() {
-
-  return (
-
-    <Container>
-        <SideBar />
-      <Top>
-        <TopBar />
-        <Center>
-          Posts
-        </Center>
-      </Top>
-    </Container>
-
-  )
-}
-*/

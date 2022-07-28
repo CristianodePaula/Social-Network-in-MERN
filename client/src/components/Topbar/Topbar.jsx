@@ -6,14 +6,13 @@ import {
   FaRocketchat,
   FaSignOutAlt,
   FaNewspaper,
-  FaBackspace
+  FaBackspace,
+  FaCat
 } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import ConfigModal from "../ConfigModal/ConfigModal"
-import { useDispatch } from "react-redux"
-import { logout } from "../../actions/AuthActions"
-import { useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { logout } from "../../redux/actions/AuthActions"
 
 const Container = styled.div`
   height: 50px;
@@ -35,9 +34,11 @@ const Search = styled.div`
   align-items: center;
   justify-content: flex-start;
 `
-const Logo = styled.span`
+const Title = styled.span`
   text-transform: uppercase;
-  color: white;
+  font-family: Comic Sans MS;
+  color: brown;
+  border-bottom: 1px solid brown;
 `
 const IconSearch = styled.div`
   display: flex;
@@ -76,7 +77,7 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  
+  margin-right: 10px;
 `
 export const Button = styled.button`
   width: 2.5rem;
@@ -92,11 +93,9 @@ export const Button = styled.button`
 `
 export default function Topbar() {
 
-  const params = useParams()
-  const profileUserId = params.id
-  const { user } = useSelector((state) => state.authReducer.authData)
   const dispatch = useDispatch()
   const [modalOpened, setModalOpened] = useState(false);
+  const { user } = useSelector((state) => state.authReducer.authData)
 
   const handleLogOut = () => {
     dispatch(logout())
@@ -112,38 +111,32 @@ export default function Topbar() {
           </IconSearch>
         </Search>
         <SocialName>
-          <Logo>Casa Animal</Logo>
+          <FaCat style={{ color: 'brown', paddingRight: '10px', fontSize: '20px' }} />
+          <Title>Casa Animal</Title>
         </SocialName>
         <Right>
-          {user._id !== profileUserId ? (
-            ''
-          ) : (
-            <>
-              <Link to='/home'>
-                <Icon>
-                  <FaBackspace />
-                </Icon>
-              </Link>
-              <Link to='/newPage'>
-                <Icon>
-                  <FaNewspaper />
-                </Icon>
-              </Link>
-            </>
-          )}
-
+          <Link to='/home'>
+            <Icon>
+              <FaBackspace />
+            </Icon>
+          </Link>
           <Link to='/chat' >
             <Icon>
               <FaRocketchat />
             </Icon>
           </Link>
-
+          <Link to='/newPage'>
+            <Icon>
+              <FaNewspaper />
+            </Icon>
+          </Link>
           <Icon>
             <FaUserCog onClick={() => setModalOpened(true)} />
           </Icon>
           <ConfigModal
-            modalOpened={modalOpened}
-            setModalOpened={setModalOpened}
+             modalOpened={modalOpened}
+             setModalOpened={setModalOpened}
+             data={user}
           />
           <Icon>
             <FaSignOutAlt onClick={handleLogOut} />
@@ -154,3 +147,10 @@ export default function Topbar() {
   )
 }
 
+/*
+{user._id !== profileUserId ? (
+            ''
+          ) : (
+            
+          )}
+*/

@@ -3,7 +3,7 @@ import { dataSlider } from '../../resources/Data'
 import {
     Container,
     Image
- } from './BannerStyle'
+} from './BannerStyle'
 
 export default function Banner({ slides }) {
 
@@ -32,7 +32,7 @@ export default function Banner({ slides }) {
                     {index === current && (
                         <div>
                             <Image src={slide.url} />
-                            
+
                         </div>
                     )}
                 </div>

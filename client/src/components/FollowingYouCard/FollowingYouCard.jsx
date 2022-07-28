@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from "react"
-import "./FollowersCard.css"
 import FollowersModal from "../FollowersModal/FollowersModal"
-import { getAllUser } from "../../api/UserRequests"
+import { getAllUser } from "../../redux/api/UserRequests"
 import User from "../User/User"
 import { useSelector } from "react-redux"
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 93%;
-  height: 100%;
-  border-radius: 20px;
-  border: 1px solid silver;
   display: flex;
-  padding: 10px;
   flex-direction: column;
-  font-size: 13px;
-
   align-items: center;
-  margin-bottom: 40px;
+`
+export const Wrapper = styled.div`
+  width: 80%;
+  background: gainsboro;
+  border-radius: 20px;
 `
 export const Users = styled.div`
   display: flex;
@@ -36,6 +32,7 @@ export const Span = styled.span`
   color: orangered;
   margin-top: 10px;
   cursor: pointer;
+  margin-bottom: 10px;
 `
 const FollowersCard = ({ location }) => {
   const [modalOpened, setModalOpened] = useState(false)
@@ -52,18 +49,20 @@ const FollowersCard = ({ location }) => {
 
   return (
     <Container>
-      <H1>Sugestões de amizade</H1>
-      <Users>
-        {persons.map((person, id) => {
-          if (person._id !== user._id)
-            return <User person={person} key={id} />
-        })}
-        <Span onClick={() => setModalOpened(true)}> Visualizar </Span>
-      </Users>
+      <Wrapper>
+        <H1>Sugestões de amizade</H1>
+        <Users>
+          {persons.slice(0, 5).map((person, id) => {
+            if (person._id !== user._id)
+              return <User person={person} key={id} />
+          })}
+        </Users>
+        <Span onClick={() => setModalOpened(true)}> Ver Todos </Span>
       <FollowersModal
         modalOpened={modalOpened}
         setModalOpened={setModalOpened}
       />
+      </Wrapper>
     </Container>
   )
 }

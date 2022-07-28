@@ -18,7 +18,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import store from "./store/ReduxStore"
+import store from "./redux/store/ReduxStore"
 //import { PersistGate } from "redux-persist/integration/react"
 import App from "./App"
 import 'normalize.css'

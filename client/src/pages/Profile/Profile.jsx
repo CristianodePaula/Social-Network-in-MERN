@@ -6,6 +6,7 @@ import Leftbar from "../../components/Leftbar/Leftbar"
 import "./Profile.css"
 import Topbar from "../../components/Topbar/Topbar"
 import Profilebar from "../../components/Profilebar/Profilebar"
+import InfoCard from "../../components/InfoCard/InfoCard"
 
 export const ProfileTop = styled.div`
   position: relative;
@@ -17,16 +18,19 @@ export const ProfileCenter = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  max-height: 150vh;
+  overflow: auto;
 `
 const Profile = () => {
   return (
     <>
       <Topbar />
       <ProfileTop>
-        <Leftbar />
+      <Leftbar />
         <ProfileCenter>
-          <ProfileCard location="profilePage" />
-          <Posts />
+        <ProfileCard location="profilePage" />
+          <InfoCard />
+          <Posts/>
         </ProfileCenter>
         <Profilebar />
       </ProfileTop>

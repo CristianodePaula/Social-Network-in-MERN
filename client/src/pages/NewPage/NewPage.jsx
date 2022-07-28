@@ -2,8 +2,9 @@ import React, { useState, useRef } from 'react'
 import Topbar from '../../components/Topbar/Topbar'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from "react-redux"
-import { uploadPage } from "../../actions/PageAction" // refazer?
-import { uploadImage } from "../../actions/UploadAction" // refazer?
+import { uploadPage } from "../../redux/actions/PageAction" 
+import { uploadImage } from "../../redux/actions/UploadAction" 
+import { FaCameraRetro, FaImage } from 'react-icons/fa'
 
 const Container = styled.div`
   height: 100vh;
@@ -15,32 +16,70 @@ const Container = styled.div`
   justify-content: center;
 `
 const Form = styled.div`
-  height: 35vw;
-  width: 40vw;
+  height: 80vh;
+  width: 60vw;
   border-radius: 20px;
-  background: grey;
+  background: gainsboro;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 10vh;
 `
 const ProfilePic = styled.img`
-  height: 150px;
+  height: 160px;
   width: 100%;
   object-fit:cover;
 `
 const BackgroundPic = styled.img`
-  height: 80px;
-  width: 80px;
+  height: 100px;
+  width: 100px;
   object-fit:cover;
   border-radius: 50%;
-  margin-top: -20px;
+  margin-top: -50px;
 `
-const Title = styled.h1`
-  font-size: 20px;
+const Input = styled.input`
+  margin-top: 10px;
+  border-radius: 20px;
+  border: 0 none;
+  outline: 0;
+  padding-left: 15px;
+  width: 320px;
+  height: 25px;
 `
-const Input = styled.input``
-const Button = styled.button``
-
+const Button = styled.button`
+  background: orange;
+  color: white;
+  border: 0;
+  border-radius: 20px;
+  height: 30px;
+  width: 130px;
+  margin-left: 45vw;
+  cursor: pointer;
+`
+const Description = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+const Left = styled.div`
+  height: 100px;
+  flex: 1;
+  margin: 20px;
+`
+const Right = styled.div`
+  height: 100px;
+  flex: 1;
+  margin: 20px;
+`
+const Label = styled.label``
+export const InputImg = styled.input`
+  display: none;
+`
+export const Span = styled.span`
+  font-size: 15px;
+  color: red;
+  margin-left: 20px;
+`
 function NewPage() {
 
   const dispatch = useDispatch()
@@ -48,6 +87,9 @@ function NewPage() {
   const loading = useSelector((state) => state.postReducer.uploading)
   const [image, setImage] = useState(null)
   const desc = useRef()
+  const cause = useRef()
+  const email = useRef()
+  const address = useRef()
   const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER
 
   const onImageChange = (event) => {
@@ -56,8 +98,6 @@ function NewPage() {
       setImage(img)
     }
   }
-
-  const imageRef = useRef()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -80,7 +120,7 @@ function NewPage() {
         console.log(err)
       }
     }
-    dispatch(uploadPage(newPage)) // uploadPage
+    dispatch(uploadPage(newPage))
     resetShare()
   }
 
@@ -94,40 +134,88 @@ function NewPage() {
       <Topbar />
       <Container>
         <Form>
-          <ProfilePic src={
+        <ProfilePic src={
             user.coverPicture
-              ? serverPublic + user.coverPicture // user.profilePicture
+              ? serverPublic + user.coverPicture
               : serverPublic + "defaultCover.png"
           }
           />
           <BackgroundPic src={
             user.profilePicture
-              ? serverPublic + user.profilePicture
-              : serverPublic + "defaultProfile.png"
+            ? serverPublic + user.profilePicture
+            : serverPublic + "defaultProfile.png"
           }
           />
-          <Title
-            htmlFor="fileInput"
-          >Imagem de Usuário</Title>
-          <Input
-            type="file"
-            id="fileInput"
-            ref={imageRef}
-            onChange={onImageChange}
-          />
 
-          <Title>Descrição da Página</Title>
-          <Input
-            type='text'
-            placeholder='Descrição'
-            required
-            ref={desc} />
+          <div>
+            <Label htmlFor="fileInput">
+              <FaCameraRetro />
+              <Span>Imagem de Perfil</Span>
+            </Label>
+            <InputImg
+              type="file"
+              name="profileImage"
+              id='fileInput'
+              onChange={onImageChange}
+            />
+          </div>
+          <div>
+            <Label htmlFor="fileInput2">
+              <FaImage />
+              <Span>Imagem de Fundo</Span>
+            </Label>
+            <InputImg
+              type="file"
+              name="coverImage"
+              id='fileInput2'
+              onChange={onImageChange}
+            />
+          </div>
+
+
+          <Description>
+            <Left >
+              <Input
+                type='text'
+                placeholder='Causa'
+                required
+                ref={cause}
+              />
+
+              <Input
+                type='text'
+                placeholder='Descrição'
+                required
+                ref={desc}
+                style={{
+                  height: '100px'
+                }}
+              />
+              </Left>
+
+              <Right>
+              <Input
+                type='text'
+                placeholder='Email'
+                required
+                ref={email}
+              />
+
+              <Input
+                type='text'
+                placeholder='Endereço'
+                required
+                ref={address}
+              />
+            </Right>
+          </Description>
+
 
           <Button type='submit'
             onClick={handleSubmit}
             disabled={loading}
           >
-            {loading ? "Enviando" : "Enviar"}
+            {loading ? "Criando" : "Criar"}
           </Button>
         </Form>
       </Container>
@@ -137,12 +225,3 @@ function NewPage() {
 
 export default NewPage
 
-
-/* 
-      <ProfilePic src={
-          user.profilePicture
-            ? serverPublic + user.profilePicture
-            : serverPublic + "defaultProfile.png"
-        }
-        />
-*/

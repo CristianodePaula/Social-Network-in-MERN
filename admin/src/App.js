@@ -14,9 +14,9 @@ import Login from './pages/Login/Login'
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
       <Routes>
-      <Route path='/' element={<Home/>} />
+        <Route path='/' element={<Home/>} />
         <Route path='/user' element={<Users/>} />
         <Route path='/user/:id' element={<User/>} />
         <Route path='/post' element={<Posts/>} />
@@ -25,7 +25,7 @@ function App() {
         <Route path='/statistics' element={<Statistics/>} />
         <Route path= '/login' element={<Login/>}  />
       </Routes>
-    </BrowserRouter>
+    </>
   )
 }
 

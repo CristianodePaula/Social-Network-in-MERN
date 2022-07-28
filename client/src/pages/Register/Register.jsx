@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useNavigate } from "react-router-dom"
-import { signUp } from "../../actions/AuthActions.js"
+import { signUp } from "../../redux/actions/AuthActions.js"
 import { useDispatch } from "react-redux"
 
 const Container = styled.div`
@@ -91,6 +91,13 @@ export default function Register() {
           placeholder='nome de usuário' 
           name="username"
           value={data.username}
+          onChange={handleChange}
+        />
+         <Input 
+          type='email'
+          placeholder='email' 
+          name="email"
+          value={data.email}
           onChange={handleChange}
         />
         <Input 

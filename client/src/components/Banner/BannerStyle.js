@@ -8,6 +8,7 @@ export const Container = styled.div`
     background: #000;
     overflow: hidden;
     border-radius: 20px;
+    margin-bottom: 40px;
 `
 export const Image = styled.img`
     width: 300px;

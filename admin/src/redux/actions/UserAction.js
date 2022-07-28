@@ -1,4 +1,15 @@
-import * as UserApi from "../api/UserRequests";
+import * as UserApi from "../api/UserRequests"
+
+export const getAllUsers = (id) => async (dispatch) => {
+    dispatch({ type: "RETREIVING_START" });
+    try {
+      const { data } = await UserApi.getAllUsers(id);
+      dispatch({ type: "RETREIVING_SUCCESS", data: data });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: "RETREIVING_FAIL" });
+    }
+  };
 
 
 export const updateUser=(id, formData)=> async(dispatch)=> {

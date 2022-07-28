@@ -3,12 +3,13 @@ import styled from 'styled-components'
 import SinglePost from '../SinglePost/SinglePost'
 import { useSelector, useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
-import { getTimelinePosts } from "../../actions/PostsAction"
+import { getTimelinePosts } from "../../redux/actions/PostsAction"
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
 `
 export default function Posts() {
   

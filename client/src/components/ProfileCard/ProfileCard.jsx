@@ -1,5 +1,4 @@
 import React from "react"
-import "./ProfileCard.css"
 import styled from 'styled-components'
 import { Link } from "react-router-dom"
 import { FaUserAlt } from 'react-icons/fa'
@@ -8,25 +7,25 @@ import { useSelector } from "react-redux"
 const Container = styled.div`
   border-radius: 1.5rem;
   display: flex;
-  height: 340px;
+  height: 360px;
   flex-direction: column;
   position: relative;
   gap: 1rem;
-  overflow-x: clip;
   background: gainsboro;
-  margin-bottom: 40px
+  margin-bottom: 40px;
 `
 export const ProfileImages = styled.div`
-  position: relative;
+position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 `
 export const ImgCover = styled.img`
-  height: 120px;
-  width: 300px;
+  height: 150px;
+  width: 100%;
   object-fit: cover;
+
 `
 export const ImgProfile = styled.img`
   height: 80px;
@@ -39,8 +38,7 @@ export const ProfileName = styled.h1`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 20px;
-  margin-top: -10px;
+  font-size: 15px;
 `
 export const FollowStatus = styled.div`
   display: flex;
@@ -56,6 +54,7 @@ export const Status = styled.div`
 `
 export const Span = styled.span`
   margin-bottom: 10px;
+  font-size: 12px;
 `
 export const Number = styled.span`
   color: blue;
@@ -68,8 +67,7 @@ const LinkPerfil = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 15px;
-  margin-bottom: 10px;
-  margin-top: -10px;
+  margin-top: -15px;
   color: orangered;
 `
 const ProfileCard = ({ location }) => {
@@ -133,6 +131,7 @@ const ProfileCard = ({ location }) => {
               Ir Perfil
             </Link>
           </LinkPerfil>
+          
         </div>
       )}
     </Container>

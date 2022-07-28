@@ -1,12 +1,11 @@
-// MODAL DE EDIÇÃO
 import React, { useState } from "react"
 import { Modal, useMantineTheme } from "@mantine/core"
 import styled from 'styled-components'
 import { FaCameraRetro, FaImage } from 'react-icons/fa'
 import { useDispatch } from "react-redux" 
 import { useParams } from "react-router-dom"
-import { uploadImage } from "../../actions/UploadAction"
-import { updateUser } from "../../actions/UserAction"
+import { uploadImage } from "../../redux/actions/UploadAction"
+import { updateUser } from "../../redux/actions/UserAction"
 
 export const Form = styled.form`
   font-size: 20px;
@@ -56,7 +55,7 @@ export const Button = styled.button`
   margin-top: 15px;
   cursor: pointer;
 `
-function ProfileEdit({ modalOpened, setModalOpened, data }) {
+const ProfileModal = ({ modalOpened, setModalOpened, data }) => {
 
   const theme = useMantineTheme();
   const { password, ...other } = data;
@@ -66,6 +65,8 @@ function ProfileEdit({ modalOpened, setModalOpened, data }) {
   const dispatch = useDispatch();
   const param = useParams();
 
+  console.log(data)
+   
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -128,20 +129,11 @@ function ProfileEdit({ modalOpened, setModalOpened, data }) {
         <H3>Perfil</H3>
         <div>
           <Input
-            value={formData.firstname}
+            value={formData.username}
             onChange={handleChange}
             type="text"
-            placeholder="Segundo Nome"
-            name="firstname"
-          />
-        </div>
-        <div>
-          <Input
-            value={formData.lastname}
-            onChange={handleChange}
-            type="text"
-            placeholder="Primeiro Nome"
-            name="lastname"
+            placeholder="Usuário"
+            name="username"
           />
         </div>
         <div>
@@ -219,4 +211,5 @@ function ProfileEdit({ modalOpened, setModalOpened, data }) {
   )
 }
 
-export default ProfileEdit
+
+export default ProfileModal

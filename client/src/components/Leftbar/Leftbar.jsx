@@ -26,15 +26,17 @@ export default function Leftbar() {
     <Container>
       <Wrapper>
         {user._id === profileUserId ? (
-          ''
+          <Banner slides={dataSlider} />
         ) : (
+          <>
           <ProfileCard />
+          <FollowingYouCard />
+          </>
         )}
-        <FollowingYouCard />
         {user._id === profileUserId ? (
           <>
             <FriendsOnline />
-            <Banner slides={dataSlider} />
+            
           </>
         ) : (
           ''

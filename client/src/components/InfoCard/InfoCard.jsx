@@ -3,7 +3,7 @@ import { FaUserEdit } from 'react-icons/fa'
 import ProfileModal from "../ProfileModal/ProfileModal"
 import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import * as UserApi from "../../api/UserRequests.js"
+import * as UserApi from "../../redux/api/UserRequests.js"
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -12,9 +12,9 @@ export const Container = styled.div`
   gap: 0.75rem;
   padding: 1rem;
   border-radius: 1rem;
-  width: 90%;
+  width: 95%;
   background: gainsboro;
-  margin-bottom: 40px;
+  margin-top: -40px;
 ` 
 export const InfoHead = styled.div`
   display: flex;
@@ -23,13 +23,17 @@ export const InfoHead = styled.div`
   cursor: pointer;
 `
 export const H1 = styled.h1`
-  font-size: 25px;
+  font-size: 20px;
 ` 
 export const Icon = styled.a`
-  font-size: 25px;
+  font-size: 20px;
 `
-export const Info = styled.div`` 
-export const Span = styled.span`` 
+export const Info = styled.div`
+  font-size: 15px;
+`
+export const Span = styled.span`
+
+` 
 export const Value = styled.span`` 
 
 const InfoCard = () => {
@@ -44,12 +48,10 @@ const InfoCard = () => {
     const fetchProfileUser = async () => {
       if (profileUserId === user._id) {
         setProfileUser(user);
-        console.log(profileUser)
       } else {
         console.log("fetching")
         const profileUser = await UserApi.getUser(profileUserId)
         setProfileUser(profileUser)
-        console.log(profileUser)
       }
     }
     fetchProfileUser()
@@ -71,7 +73,7 @@ const InfoCard = () => {
             <ProfileModal
               modalOpened={modalOpened}
               setModalOpened={setModalOpened}
-              data = {user}
+              data={user}
             />
           </div>
         ) : (
@@ -123,6 +125,12 @@ const InfoCard = () => {
         </Span>
         <Value>{profileUser.worksAt}</Value>
       </Info>
+      <Span onClick={() => setModalOpened(true)}> Ver Todos </Span>
+        <ProfileModal
+        modalOpened={modalOpened}
+        setModalOpened={setModalOpened}
+        data={user}
+        />
     </Container>
   )
 }

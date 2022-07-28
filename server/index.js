@@ -4,13 +4,13 @@ const dotenv = require('dotenv')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
-const AuthRoute = require("./routes/AuthRoute")
-const UserRoute = require("./routes/UserRoute")
-const PostRoute = require("./routes/PostRoute")
-const PageRoute = require("./routes/PageRoute")
-const UploadRoute = require("./routes/UploadRoute")
-const ChatRoute = require ('./routes/ChatRoute')
-const MessageRoute = require("./routes/MessageRoute")
+const AuthRoute = require("./src/routes/AuthRoute")
+const UserRoute = require("./src/routes/UserRoute")
+const PostRoute = require("./src/routes/PostRoute")
+const PageRoute = require("./src/routes/PageRoute")
+const UploadRoute = require("./src/routes/UploadRoute")
+const ChatRoute = require ('./src/routes/ChatRoute')
+const MessageRoute = require("./src/routes/MessageRoute")
 
 const app = express()
 
@@ -45,7 +45,6 @@ app.use('/chat', ChatRoute)
 app.use('/contact', MessageRoute)
 app.use('/upload', UploadRoute)
 app.use('/message', MessageRoute)
-
 
 app.listen(process.env.PORT, ()=> {
     console.log(`Servidor rodando na porta ${process.env.PORT}`)

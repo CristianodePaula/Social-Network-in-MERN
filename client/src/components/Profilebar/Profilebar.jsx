@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import InfoCard from '../../components/InfoCard/InfoCard'
 import Friends from '../Friends/Friends'
 import Pages from '../Pages/Pages'
 
@@ -17,7 +16,6 @@ export default function Profilebar() {
   return (
     <Container>
       <Wrapper>
-      <InfoCard />
       <Friends />
       <Pages />
       </Wrapper>

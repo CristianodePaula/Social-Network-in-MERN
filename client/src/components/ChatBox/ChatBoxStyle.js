@@ -3,6 +3,8 @@ import styled from 'styled-components'
 export const Container = styled.div`
   height: 90vh;
   width: 100%;
+  background: aliceblue;
+  padding: 10px;
 `
 export const BoxUser = styled.div`
   display: flex;
@@ -19,7 +21,9 @@ export const Img = styled.img`
   margin: 10px 20px 10px 10px;
 `
 export const Span = styled.span`
-  font-size: 25px; 
+  font-size: 15px;
+  color: red; 
+  padding: 20px;
 `
 export const HR = styled.hr`
   width: 95%,
@@ -30,7 +34,7 @@ export const MessageText = styled.span`
   font-size: 20px;
 `
 export const BoxText = styled.div`
-  background: gainsboro;
+background: gainsboro;
   margin-top: 2%;  
   width: 95%; 
   height: 65%;

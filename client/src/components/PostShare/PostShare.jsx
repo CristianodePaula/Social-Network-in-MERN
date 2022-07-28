@@ -1,5 +1,4 @@
 import React, { useState, useRef } from 'react'
-import './Css.css'
 import styled from 'styled-components'
 import {
   FaPhotoVideo,
@@ -7,7 +6,7 @@ import {
   FaRegCalendarAlt
 } from 'react-icons/fa'
 import { useDispatch, useSelector } from "react-redux"
-import { uploadImage, uploadPost } from "../../actions/UploadAction"
+import { uploadImage, uploadPost } from "../../redux/actions/UploadAction"
 
 const Container = styled.div`
   height: 120px;
@@ -15,8 +14,10 @@ const Container = styled.div`
   background: silver;
   border-radius: 20px;
   margin-top: 10px;
+  display: flex;
+  flex-direction: column;
 `
-const Wrapper = styled.div`
+const InputContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -38,7 +39,7 @@ const Input = styled.input`
   outline:none;
   padding-left: 15px;
 `
-const Share = styled.div`
+const ShareContainer = styled.div`
   display: flex;
   justify-content: space-around;
   flex-direction: row;
@@ -67,6 +68,19 @@ const Button = styled.button`
   margin-bottom: 5px;
   cursor: pointer;
 `
+export const PreviewContainer = styled.div`
+position: sticky;
+margin-top: 22px;
+`
+export const PreviewImage = styled.div`
+`
+export const Img = styled.img`
+  height: 350px;
+  width: 600px;
+  max-height: 20rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+`
 export default function PostShare() {
 
   const dispatch = useDispatch()
@@ -84,7 +98,7 @@ export default function PostShare() {
   }
 
   const imageRef = useRef()
- 
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -117,24 +131,21 @@ export default function PostShare() {
 
   return (
     <Container>
-      <Wrapper>
+      <InputContainer>
         <Input
           type='text'
           placeholder='O que deseja publicar?'
           required
           ref={desc}
-     
         />
-                
         <ProfilePic src={
           user.profilePicture
             ? serverPublic + user.profilePicture
             : serverPublic + "defaultProfile.png"
         }
         />
-
-      </Wrapper>
-      <Share >
+      </InputContainer>
+      <ShareContainer >
         <Option
           onClick={() => imageRef.current.click()}
         >
@@ -155,22 +166,48 @@ export default function PostShare() {
         >
           {loading ? "Enviando" : "Enviar"}
         </Button>
-      </Share>
+      </ShareContainer>
       <div style={{ display: "none" }}>
         <input
           type="file"
           ref={imageRef}
           onChange={onImageChange}
         />
-        
       </div>
+      <PreviewContainer>
       {image && (
+          <PreviewImage>
+          <FaRegCalendarAlt onClick={() => setImage(null)} />
+          <Img src={URL.createObjectURL(image)} alt="preview" />
+        </PreviewImage>
+      )}
+      </PreviewContainer>
+    </Container>
+  )
+}
+
+
+
+
+
+/*
+
+   {image && (
         <div className='previewImage'>
           <FaRegCalendarAlt onClick={() => setImage(null)} />
           <img src={URL.createObjectURL(image)} alt="preview" />
         </div>
       )}
-      
-    </Container>
-  )
-}
+
+
+
+
+      //
+
+
+            <PreviewImage>
+          <FaRegCalendarAlt onClick={() => setImage(null)} />
+          <img src={URL.createObjectURL(image)} alt="preview" />
+        </PreviewImage>
+
+*/

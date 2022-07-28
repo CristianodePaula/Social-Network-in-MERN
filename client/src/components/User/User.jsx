@@ -1,29 +1,24 @@
 import React, { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { followUser, unfollowUser } from "../../actions/UserAction"
+import { followUser, unfollowUser } from "../../redux/actions/UserAction"
 import styled from 'styled-components'
 
-export const Button = styled.button`
-  color: white;
-  background: red;
-  border: none;
-  border-radius: 10px;
-  margin-left: 20px;
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
 `
 export const UserBox = styled.div`
-    display: flex;
-`
-export const Follower = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 5px;
+  display: flex;
+  align-items: center;
 `
 export const Img = styled.img`
   height: 50px;
   width: 50px;
   object-fit: cover;
   border-radius: 50%;
+  margin-right: 5px;
 `
 export const Names = styled.div`
   display: flex;  
@@ -31,6 +26,17 @@ export const Names = styled.div`
   align-items: center;
 `
 export const Span = styled.span`
+  font-size: 12px;
+`
+
+export const Button = styled.button`
+  color: white;
+  background: red;
+  border: none;
+  border-radius: 10px;
+  margin-left: 20px;
+  padding: 10px;
+  font-size: 12px;
 `
 const User = ({ person }) => {
 
@@ -47,7 +53,7 @@ const User = ({ person }) => {
     setFollowing((prev) => !prev)
   }
   return (
-    <Follower>
+    <Container>
       <UserBox>
         <Img
           src={
@@ -70,7 +76,7 @@ const User = ({ person }) => {
       >
         {following ? "Não seguir" : "Seguir"}
       </Button>
-    </Follower>
+    </Container>
   )
 }
 

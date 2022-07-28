@@ -6,7 +6,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  height: 110vh;
-  overflow: auto;
   align-items: center;
+  gap: 1rem;
+  max-height: 150vh;
+  overflow: auto;
+  margin-bottom: 40px;
 `

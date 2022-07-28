@@ -1,7 +1,7 @@
 # SOCIAL NETWORK
 
 Click to watch the video on youtube 
-[![Watch the video](https://user-images.githubusercontent.com/91747232/179322680-9afa9b63-ced3-45fa-aa01-3e47f7404c2f.png)]()
+[![Watch the video](https://user-images.githubusercontent.com/91747232/181356700-e48c7f9d-9626-4ce1-a65d-edafba4da701.jpg)]()
 
 ## 🚀 Starting
 
@@ -37,5 +37,4 @@ Cristiano de Paula Moreira
 This code is Open Source
 
 ## 🎁 Thanks
-
 

@@ -1,19 +1,18 @@
 import React, { useRef, useState } from "react"
 import ChatBox from "../../components/ChatBox/ChatBox"
 import Conversation from "../../components/Coversation/Conversation"
-import NavIcons from "../../components/NavIcons/NavIcons"
 import "./Chat.css";
 import { useEffect } from "react"
-import { userChats } from "../../api/ChatRequests"
+import { userChats } from "../../redux/api/ChatRequests"
 import { useSelector } from "react-redux"
 import { io } from "socket.io-client"
 import styled from 'styled-components'
+import Topbar from "../../components/Topbar/Topbar";
 
 export const Container = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: 22% auto;
-  gap: 1rem;
 `
 export const LeftSideChat = styled.div`
   display: flex;
@@ -96,6 +95,8 @@ const Chat = () => {
   };
 
   return (
+    <>
+    <Topbar />
     <Container>
       <LeftSideChat>
         <ChatContainer>
@@ -119,7 +120,7 @@ const Chat = () => {
       </LeftSideChat>
       <RightSideChat>
         <div style={{ width: "10rem", alignSelf: "flex-end" }}>
-          <NavIcons />
+       
         </div>
         <ChatBox
           chat={currentChat}
@@ -129,6 +130,7 @@ const Chat = () => {
         />
       </RightSideChat>
     </Container>
+    </>
   )
 }
 

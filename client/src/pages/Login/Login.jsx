@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useNavigate } from "react-router-dom"
-import { logIn } from "../../actions/AuthActions.js"
+import { logIn } from "../../redux/actions/AuthActions.js"
 import { useDispatch } from "react-redux"
 
 export const Container = styled.div`
