@@ -50,22 +50,46 @@ const updatePost = async (req, res) => {
   }
 }
 
+
 const deletePost = async (req, res) => {
   const id = req.params.id
   const { userId } = req.body
 
   try {
     const post = await PostModel.findById(id)
-    if (post.userId === userId) {
+    if (post.userId) {
       await post.deleteOne()
       res.status(200).json("Post deletado com sucesso")
     } else {
-      res.status(403).json("Acesso negadon")
+      res.status(403).json("Acesso negado")
     }
   } catch (error) {
     res.status(500).json(error);
   }
 }
+
+/*
+
+
+const deletePost = async (req, res) => {
+  try {
+    const post = await PostModel.findById(req.params.id);
+    if (post.username === req.body.username) {
+      try {
+        await post.delete();
+        res.status(200).json("Post has been deleted...");
+      } catch (err) {
+        res.status(500).json(err);
+      }
+    } else {
+      res.status(401).json("You can delete only your post!");
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
+
+*/ 
 
 const likePost = async (req, res) => {
   const id = req.params.id

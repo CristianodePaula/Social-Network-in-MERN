@@ -6,6 +6,7 @@ import Register from './pages/Register/Register'
 import Login from './pages/Login/Login'
 import NewPage from './pages/NewPage/NewPage'
 import Chat from './pages/Chat/Chat'
+import Contact from './pages/Contact/Contact'
 import { useSelector } from "react-redux"
 
 export default function App() {
@@ -48,10 +49,15 @@ export default function App() {
         />
 
         <Route
+          path="/contact"
+          element={user ? <Contact /> : <Navigate to="../login" />}
+        />
+
+        <Route
           path="*"
           element={
             <main style={{ padding: "1rem" }}>
-              <p>Página não existente</p>
+              <p>Esta página não existente</p>
             </main>
           }
         />

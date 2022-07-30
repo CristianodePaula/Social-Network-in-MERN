@@ -3,6 +3,7 @@ const {
     createPage,
     deletePage,
     getPage,
+    getAllPages,
     getTimelinePages,
     likePage,
     updatePage
@@ -10,6 +11,7 @@ const {
 const router = express.Router()
 
 router.post('/', createPage)
+router.get('/', getAllPages)
 router.get('/:id', getPage)
 router.put('/:id', updatePage)
 router.delete("/:id", deletePage)

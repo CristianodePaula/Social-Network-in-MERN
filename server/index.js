@@ -11,6 +11,7 @@ const PageRoute = require("./src/routes/PageRoute")
 const UploadRoute = require("./src/routes/UploadRoute")
 const ChatRoute = require ('./src/routes/ChatRoute')
 const MessageRoute = require("./src/routes/MessageRoute")
+const ContactRoute = require("./src/routes/ContactRoute")
 
 const app = express()
 
@@ -42,9 +43,9 @@ app.use('/user', UserRoute)
 app.use('/posts', PostRoute)
 app.use('/page', PageRoute)
 app.use('/chat', ChatRoute)
-app.use('/contact', MessageRoute)
 app.use('/upload', UploadRoute)
 app.use('/message', MessageRoute)
+app.use('/contact', ContactRoute)
 
 app.listen(process.env.PORT, ()=> {
     console.log(`Servidor rodando na porta ${process.env.PORT}`)

@@ -14,3 +14,4 @@ API.interceptors.request.use((req) => {
 
 export const uploadImage = (data) => API.post("/upload/", data)
 export const uploadPage = (data) => API.post("/page", data)
+

@@ -5,7 +5,7 @@ import ProfileCard from "../../components/ProfileCard/ProfileCard"
 import Leftbar from "../../components/Leftbar/Leftbar"
 import "./Profile.css"
 import Topbar from "../../components/Topbar/Topbar"
-import Profilebar from "../../components/Profilebar/Profilebar"
+import Profilebar from "../../components/Bars/Profilebar/Profilebar"
 import InfoCard from "../../components/InfoCard/InfoCard"
 
 export const ProfileTop = styled.div`

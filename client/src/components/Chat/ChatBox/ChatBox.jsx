@@ -13,12 +13,11 @@ import {
   Send
 } from './ChatBoxStyle'
 import { useRef } from "react";
-import { addMessage, getMessages } from "../../redux/api/MessageRequests";
-import { getUser } from "../../redux/api/UserRequests";
+import { addMessage, getMessages } from "../../../redux/api/MessageRequests";
+import { getUser } from "../../../redux/api/UserRequests";
 import "./ChatBox.css";
 import { format } from "timeago.js";
 import InputEmoji from 'react-input-emoji'
-
 
 export default function ChatBox({ chat, currentUser, setSendMessage, receivedMessage }) {
 
@@ -30,7 +29,6 @@ export default function ChatBox({ chat, currentUser, setSendMessage, receivedMes
     setNewMessage(newMessage)
   }
 
-  // fetching data for header
   useEffect(() => {
     const userId = chat?.members?.find((id) => id !== currentUser);
     const getUserData = async () => {
@@ -45,7 +43,6 @@ export default function ChatBox({ chat, currentUser, setSendMessage, receivedMes
     if (chat !== null) getUserData();
   }, [chat, currentUser]);
 
-  // fetch messages
   useEffect(() => {
     const fetchMessages = async () => {
       try {

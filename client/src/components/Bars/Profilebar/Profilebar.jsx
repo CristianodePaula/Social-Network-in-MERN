@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import Friends from '../Friends/Friends'
-import Pages from '../Pages/Pages'
+import Friends from '../../Friends/AllFriends/AllFriends'
+import Pages from '../../Pages/AllPages/AllPages'
 
 const Container = styled.div`
   flex: 3;

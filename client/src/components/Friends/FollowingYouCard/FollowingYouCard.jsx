@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import FollowersModal from "../FollowersModal/FollowersModal"
 import { getAllUser } from "../../redux/api/UserRequests"
-import User from "../User/User"
+import User from "../Users/Users"
 import { useSelector } from "react-redux"
 import styled from 'styled-components'
 

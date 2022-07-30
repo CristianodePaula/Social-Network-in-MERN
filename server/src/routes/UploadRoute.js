@@ -1,6 +1,5 @@
 const router = require("express").Router()
 const multer = require('multer')
-//const { uploadImage } = require("../controllers/UploadController")
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -12,8 +11,6 @@ const storage = multer.diskStorage({
   })
 
 const upload = multer({ storage: storage })
-
-//  router.post('/', upload.single("file"), uploadImage)
 
 router.post("/", upload.single("file"), async (req, res) => {
     try {

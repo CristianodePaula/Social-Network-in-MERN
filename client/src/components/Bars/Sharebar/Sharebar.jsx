@@ -6,7 +6,7 @@ import {
   FaRegCalendarAlt
 } from 'react-icons/fa'
 import { useDispatch, useSelector } from "react-redux"
-import { uploadImage, uploadPost } from "../../redux/actions/UploadAction"
+import { uploadImage, uploadPost } from "../../../redux/actions/UploadAction"
 
 const Container = styled.div`
   height: 120px;

@@ -23,7 +23,16 @@ const getPage = async (req, res) => {
     res.status(500).json(error)
   }
 }
+const getAllPages = async (req, res) => {
+  const id = req.params.id
 
+  try {
+    const page = await PageModel.find(id)
+    res.status(200).json(page)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
 const updatePage = async (req, res) => {
   const pageId = req.params.id
   const { userId } = req.body
@@ -117,6 +126,7 @@ const getTimelinePages = async (req, res) => {
 module.exports = { 
   createPage,
   getPage,
+  getAllPages,
   updatePage,
   deletePage,
   likePage,

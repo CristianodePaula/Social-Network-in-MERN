@@ -5,6 +5,10 @@ import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import * as UserApi from "../../redux/api/UserRequests.js"
 import styled from 'styled-components'
+import ConfigModal from "../ConfigModal/ConfigModal"
+import {
+  FaUserCog,
+} from 'react-icons/fa'
 
 export const Container = styled.div`
   display: flex;
@@ -15,7 +19,7 @@ export const Container = styled.div`
   width: 95%;
   background: gainsboro;
   margin-top: -40px;
-` 
+`
 export const InfoHead = styled.div`
   display: flex;
   justify-content: space-between;
@@ -24,17 +28,17 @@ export const InfoHead = styled.div`
 `
 export const H1 = styled.h1`
   font-size: 20px;
-` 
+`
 export const Icon = styled.a`
-  font-size: 20px;
+  font-size: 25px;
+  margin-left: 20px;
 `
 export const Info = styled.div`
   font-size: 15px;
 `
 export const Span = styled.span`
-
-` 
-export const Value = styled.span`` 
+`
+export const Value = styled.span``
 
 const InfoCard = () => {
 
@@ -62,20 +66,21 @@ const InfoCard = () => {
       <InfoHead>
         <H1>Quem Sou</H1>
         {user._id === profileUserId ? (
-          <div>
+          <>
             <Icon>
-            <FaUserEdit
-              width="2rem"
-              height="1.2rem"
-              onClick={() => setModalOpened(true)}
-            />
+              <FaUserEdit
+                width="2rem"
+                height="1.2rem"
+                onClick={() => setModalOpened(true)}
+                style={{ color: 'darkgreen' }}
+              />
             </Icon>
             <ProfileModal
               modalOpened={modalOpened}
               setModalOpened={setModalOpened}
               data={user}
             />
-          </div>
+          </>
         ) : (
           ""
         )}
@@ -125,12 +130,6 @@ const InfoCard = () => {
         </Span>
         <Value>{profileUser.worksAt}</Value>
       </Info>
-      <Span onClick={() => setModalOpened(true)}> Ver Todos </Span>
-        <ProfileModal
-        modalOpened={modalOpened}
-        setModalOpened={setModalOpened}
-        data={user}
-        />
     </Container>
   )
 }

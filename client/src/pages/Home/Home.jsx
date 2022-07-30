@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Leftbar from '../../components/Leftbar/Leftbar'
-import Feedbar from '../../components/Feedbar/Feedbar'
+import Feedbar from '../../components/Bars/Feedbar/Feedbar'
 import Rightbar from '../../components/Rightbar/Rightbar'
 import Topbar from '../../components/Topbar/Topbar'
 

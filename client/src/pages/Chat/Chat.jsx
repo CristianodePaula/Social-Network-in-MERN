@@ -1,13 +1,13 @@
 import React, { useRef, useState } from "react"
-import ChatBox from "../../components/ChatBox/ChatBox"
-import Conversation from "../../components/Coversation/Conversation"
+import ChatBox from "../../components/Chat/ChatBox/ChatBox"
+import Conversation from "../../components/Chat/Coversation/Conversation"
 import "./Chat.css";
 import { useEffect } from "react"
 import { userChats } from "../../redux/api/ChatRequests"
 import { useSelector } from "react-redux"
 import { io } from "socket.io-client"
 import styled from 'styled-components'
-import Topbar from "../../components/Topbar/Topbar";
+import Topbar from "../../components/Topbar/Topbar"
 
 export const Container = styled.div`
   position: relative;
