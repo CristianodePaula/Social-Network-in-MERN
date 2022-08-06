@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { Modal, useMantineTheme } from "@mantine/core"
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useParams } from "react-router-dom"
-import { updateUser } from "../../redux/actions/UserAction"
+import { updateUser } from "../../../redux/actions/UserAction"
 import styled from "styled-components"
 
 export const Form = styled.form`

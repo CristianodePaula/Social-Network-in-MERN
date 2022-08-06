@@ -1,12 +1,12 @@
 import React from "react"
 import styled from "styled-components"
 import Posts from "../../components/Posts/Posts"
-import ProfileCard from "../../components/ProfileCard/ProfileCard"
-import Leftbar from "../../components/Leftbar/Leftbar"
+import ProfileCard from "../../components/User/ProfileCard/ProfileCard"
+import Leftbar from "../../components/Bars/Leftbar/Leftbar"
 import "./Profile.css"
-import Topbar from "../../components/Topbar/Topbar"
+import Topbar from "../../components/Bars/Topbar/Topbar"
 import Profilebar from "../../components/Bars/Profilebar/Profilebar"
-import InfoCard from "../../components/InfoCard/InfoCard"
+import InfoCard from "../../components/User/InfoCard/InfoCard"
 
 export const ProfileTop = styled.div`
   position: relative;
@@ -28,7 +28,7 @@ const Profile = () => {
       <ProfileTop>
       <Leftbar />
         <ProfileCenter>
-        <ProfileCard location="profilePage" />
+        <ProfileCard location="profilePage" type='sm' />
           <InfoCard />
           <Posts/>
         </ProfileCenter>

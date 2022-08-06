@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
 import { FaUserEdit } from 'react-icons/fa'
-import ProfileModal from "../ProfileModal/ProfileModal"
+import ProfileModal from "../../Modals/ProfileModal/ProfileModal"
 import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import * as UserApi from "../../redux/api/UserRequests.js"
+import * as UserApi from "../../../redux/api/UserRequests.js"
 import styled from 'styled-components'
-import ConfigModal from "../ConfigModal/ConfigModal"
+import ConfigModal from "../../Modals/ConfigModal/ConfigModal"
 import {
   FaUserCog,
 } from 'react-icons/fa'

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { dataSlider } from '../../resources/Data'
+import { dataSlider } from '../../../resources/Data'
 import {
     Container,
     Image

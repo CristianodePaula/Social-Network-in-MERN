@@ -10,9 +10,9 @@ import {
   FaCat
 } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import ConfigModal from "../ConfigModal/ConfigModal"
+import ConfigModal from "../../Modals/ConfigModal/ConfigModal"
 import { useDispatch, useSelector } from "react-redux"
-import { logout } from "../../redux/actions/AuthActions"
+import { logout } from "../../../redux/actions/AuthActions"
 
 const Container = styled.div`
   height: 50px;

@@ -9,9 +9,9 @@ import {
   Name
 } from './FriendsOnlineStyle'
 */
-import { followersData } from '../../resources/Data'
+import { followersData } from '../../../resources/Data'
 import { Link } from 'react-router-dom'
-import FriendsOnlineModal from '../FriendsOnlineModal/FriendsOnlineModal'
+import FriendsOnlineModal from '../../Modals/FriendsOnlineModal/FriendsOnlineModal'
 
 import styled from "styled-components"
 

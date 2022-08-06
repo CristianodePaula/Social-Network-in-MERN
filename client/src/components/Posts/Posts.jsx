@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import SinglePost from '../SinglePost/SinglePost'
+import SinglePost from '../Posts/SinglePost/SinglePost'
 import { useSelector, useDispatch } from "react-redux"
 import { useParams } from "react-router-dom"
 import { getTimelinePosts } from "../../redux/actions/PostsAction"

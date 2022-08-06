@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import Comment from '../../img/comment.png'
-import Share from '../../img/share.png'
-import Heart from '../../img/like.png'
-import NotLike from '../../img/notlike.png'
-import { likePost, deletePost } from "../../redux/api/PostsRequests"
+import Comment from '../../../img/comment.png'
+import Share from '../../../img/share.png'
+import Heart from '../../../img/like.png'
+import NotLike from '../../../img/notlike.png'
+import { likePost, deletePost } from "../../../redux/api/PostsRequests"
 import { useSelector, useDispatch } from "react-redux"
 import { AiFillDelete, AiTwotoneEdit } from "react-icons/ai"
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
 
 const Container = styled.div`
     display: flex;
@@ -38,7 +37,7 @@ export default function SinglePost({ data }) {
     const dispatch = useDispatch()
     const param = useParams()
     const { user } = useSelector((state) => state.authReducer.authData);
-    const { pages } = useSelector((state) => state.pageReducer.pageData);
+    //const { pages } = useSelector((state) => state.pageReducer.pageData);
     const [liked, setLiked] = useState(data.likes?.includes(user._id));
     const [likes, setLikes] = useState(data.likes?.length)
 

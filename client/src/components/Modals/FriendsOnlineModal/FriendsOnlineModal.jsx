@@ -1,6 +1,6 @@
 import React from "react"
 import { Modal, useMantineTheme } from "@mantine/core"
-import FriendsOnline from '../FriendsOnline/FriendsOnline'
+import FriendsOnline from '../../Chat/FriendsOnline/FriendsOnline'
 
 const FollowersModal = ({ modalOpened, setModalOpened }) => {
   const theme = useMantineTheme()

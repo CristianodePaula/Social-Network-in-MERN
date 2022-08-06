@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import Banner from '../Banner/Banner'
-import { dataSlider } from '../../resources/Data'
-import FriendsOnline from '../FriendsOnline/FriendsOnline'
+import Banner from '../../Others/Banner/Banner'
+import { dataSlider } from '../../../resources/Data'
+import FriendsOnline from '../../Chat/FriendsOnline/FriendsOnline'
 
 const Container = styled.div`
   flex: 3;

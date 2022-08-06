@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import { FaCameraRetro, FaImage } from 'react-icons/fa'
 import { useDispatch, useSelector } from "react-redux" 
 import { useParams } from "react-router-dom"
-import { uploadImage } from "../../redux/actions/UploadAction"
-import { updateUser } from "../../redux/actions/UserAction"
+import { uploadImage } from "../../../redux/actions/UploadAction"
+import { updateUser } from "../../../redux/actions/UserAction"
 
 export const Form = styled.form`
   font-size: 20px;

@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
-import Topbar from '../../components/Topbar/Topbar'
+import Topbar from '../../components/Bars/Topbar/Topbar'
 import contact from '../../img/contact.jpg'
 import { sendContact } from "../../redux/api/ContactRequest"
 import { useDispatch } from "react-redux"

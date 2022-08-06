@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import Topbar from '../../components/Topbar/Topbar'
+import Topbar from '../../components/Bars/Topbar/Topbar'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from "react-redux"
 import { uploadPage } from "../../redux/actions/PageAction" 
@@ -24,18 +24,6 @@ const Form = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 10vh;
-`
-const ProfilePic = styled.img`
-  height: 160px;
-  width: 100%;
-  object-fit:cover;
-`
-const BackgroundPic = styled.img`
-  height: 100px;
-  width: 100px;
-  object-fit:cover;
-  border-radius: 50%;
-  margin-top: -50px;
 `
 const Input = styled.input`
   margin-top: 10px;
@@ -91,7 +79,7 @@ function NewPage() {
   const cause = useRef()
   const email = useRef()
   const address = useRef()
-  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER
+  //const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER
 
   const onImageChange = (event) => {
     if (event.target.files && event.target.files[0]) {

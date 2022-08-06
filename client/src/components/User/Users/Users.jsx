@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { followUser, unfollowUser } from "../../redux/actions/UserAction"
+import { followUser, unfollowUser } from "../../../redux/actions/UserAction"
 import styled from 'styled-components'
 
 export const Container = styled.div`

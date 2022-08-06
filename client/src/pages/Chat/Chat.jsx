@@ -7,7 +7,7 @@ import { userChats } from "../../redux/api/ChatRequests"
 import { useSelector } from "react-redux"
 import { io } from "socket.io-client"
 import styled from 'styled-components'
-import Topbar from "../../components/Topbar/Topbar"
+import Topbar from "../../components/Bars/Topbar/Topbar"
 
 export const Container = styled.div`
   position: relative;

@@ -26,8 +26,6 @@ Welcome to another fullstack project! This application consists of a social netw
 
 ## 📌 Version
 
-This repository is basically a backup. For this reason I chose to use long commits. From version 1.0 using minors to optimize the system over time.
-
 ## ✒️ Author
 
 Cristiano de Paula Moreira

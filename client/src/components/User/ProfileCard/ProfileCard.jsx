@@ -7,7 +7,7 @@ import { useSelector } from "react-redux"
 const Container = styled.div`
   border-radius: 1.5rem;
   display: flex;
-  height: 360px;
+  height:${(props) => (props.type === "sm" ? "400px" : "340px")};
   flex-direction: column;
   position: relative;
   gap: 1rem;
@@ -22,17 +22,16 @@ position: relative;
   justify-content: center;
 `
 export const ImgCover = styled.img`
-  height: 150px;
+  height: ${(props) => (props.type === "sm" ? "220px" : "150px")};
   width: 100%;
   object-fit: cover;
-
 `
 export const ImgProfile = styled.img`
-  height: 80px;
-  width: 80px;
+  height: ${(props) => (props.type === "sm" ? "120px" : "80px")};
+  width:  ${(props) => (props.type === "sm" ? "120px" : "80px")};
   border-radius: 50%;
   object-fit: cover;
-  margin-top: -40px;
+  margin-top: -60px;
 `
 export const ProfileName = styled.h1`
   display: flex;
@@ -70,21 +69,24 @@ const LinkPerfil = styled.div`
   margin-top: -15px;
   color: orangered;
 `
-const ProfileCard = ({ location }) => {
+const ProfileCard = ({ location, type }) => {
 
   const { user } = useSelector((state) => state.authReducer.authData)
   const posts = useSelector((state) => state.postReducer.posts)
   const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER
 
   return (
-    <Container>
+    <Container type={type}>
       <ProfileImages>
-        <ImgCover src={
+        <ImgCover  
+        type={type}
+        src={
           user.coverPicture
             ? serverPublic + user.coverPicture
             : serverPublic + "defaultCover.jpg"
         } alt="CoverImage" />
         <ImgProfile
+        type={type}
           src={
             user.profilePicture
               ? serverPublic + user.profilePicture

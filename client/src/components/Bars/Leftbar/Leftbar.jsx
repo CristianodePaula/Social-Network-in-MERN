@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import FollowingYouCard from '../FollowingYouCard/FollowingYouCard'
-import ProfileCard from '../ProfileCard/ProfileCard'
-import Banner from '../Banner/Banner'
-import { dataSlider } from '../../resources/Data'
+import FollowingYouCard from '../../Friends/FollowingYouCard/FollowingYouCard'
+import ProfileCard from '../../User/ProfileCard/ProfileCard'
+import Banner from '../../Others/Banner/Banner'
+import { dataSlider } from '../../../resources/Data'
 import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import FriendsOnline from '../FriendsOnline/FriendsOnline'
+import FriendsOnline from '../../Friends/AllFriends/AllFriends'
 
 const Container = styled.div`
   flex: 3;
